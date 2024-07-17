@@ -1,8 +1,12 @@
 // import React from 'react'
 
+import AppHeader from "../components/shared/AppHeader"
+
 function Listings() {
   return (
-    <div>Listings</div>
+    <div>
+      <AppHeader/>
+    </div>
   )
 }
 

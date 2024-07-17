@@ -29,7 +29,7 @@ function ForgotPassordForm() {
                     ariaLabelName="Email"
                     inputValue={formData.email}
                     onChange={(e) => handleChange(e)}
-                    className="w-full p-4 border border-[#D0D5DD] bg-white rounded-md shadow-sm text-sm focus:outline-none focus:shadow"
+                    className="w-full p-4 border border-[#D0D5DD] bg-white rounded-md shadow-sm text-sm focus:outline-none focus:shadow mb-5"
                 />
                 {/* <PhoneNumber />
         <HiddenInput /> */}

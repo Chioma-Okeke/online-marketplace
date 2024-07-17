@@ -12,13 +12,15 @@ const FormInput = React.forwardRef(
         ariaLabelName,
         onChange,
         className,
-        showPasswordRequirement
+        inputGroupClassNames,
+        showPasswordRequirement,
+        labelClasses,
     }, ref) {
         return (
-            <div>
+            <div className={inputGroupClassNames}>
                 {inputLabel && (
                     <label
-                        className="block text-[#101928] text-sm font-medium mb-1"
+                        className={`block text-[#101928] text-sm font-medium ${labelClasses}`}
                         htmlFor={labelFor}
                     >
                         {inputLabel}
