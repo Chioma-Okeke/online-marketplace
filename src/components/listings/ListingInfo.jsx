@@ -54,7 +54,7 @@ function ListingInfo() {
                 </p>
                 <div className="flex items-center gap-5 mb-5">
                     <Button
-                        className="hidden md:block text-black text-base lg:text-lg font-bold py-2 px-6 border bg-white border-[#720D96] rounded-xl hover:bg-[#720D96] hover:text-white"
+                        className="hidden md:block text-black text-base lg:text-lg font-bold py-1.5 px-6 border bg-white border-[#720D96] rounded-md hover:bg-[#720D96] hover:text-white"
                         onClick={handleMessageToogle}
                     >
                         Message
@@ -65,10 +65,10 @@ function ListingInfo() {
                     >
                         <TiMessages size={25} />
                     </Button>
-                    <Button className="bg-white border border-[#720D96] p-4 rounded-full md:rounded-xl hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
+                    <Button className="bg-white border border-[#720D96] py-2 px-3 rounded-full md:rounded-md hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
                         <FaHeart size={25} />
                     </Button>
-                    <Button className="bg-white border border-[#720D96] p-4 rounded-full md:rounded-xl hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
+                    <Button className="bg-white border border-[#720D96] py-2 px-3 rounded-full md:rounded-md hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
                         <IoIosShareAlt size={25} />
                     </Button>
                 </div>

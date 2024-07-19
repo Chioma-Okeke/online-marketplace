@@ -7,7 +7,7 @@ import ListingHeader from "../components/listings/ListingHeader";
 
 function SingleListing() {
     return (
-        <Container className="max-w-[1550px]">
+        <Container className="">
             <ListingHeader/>
             <div className="flex w-full min-h-[100vh] flex-col md:flex-row md:py-8">
                 <ListingGallery />

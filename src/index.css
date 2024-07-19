@@ -57,6 +57,23 @@
   border-radius: 5px;
 }
 
+.app-header.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.nav-contianer::-webkit-scrollbar-track {
+  width: 10px;
+}
+
 @media (max-width: 767px) {
   .full-screen-image {
     max-width: 90%;

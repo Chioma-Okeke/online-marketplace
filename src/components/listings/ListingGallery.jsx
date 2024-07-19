@@ -37,8 +37,8 @@ function ListingGallery() {
     };
 
     return (
-        <div className="md:flex-1">
-            <div className="w-full lg:w-[80%] 2xl:w-full mx-auto py-5 px-2 md:py-0">
+        <div className="md:flex-1 2xl:flex-none 2xl:w-2/3">
+            <div className="w-full lg:w-[80%] 2xl:w-full 2xl:flex flex-row-reverse mx-auto py-5 px-2 md:py-0">
                 <div
                     className="mb-5 w-full"
                     onClick={(e) => handleImageClick(e)}
@@ -50,24 +50,27 @@ function ListingGallery() {
                         className="rounded-3xl w-full"
                     />
                 </div>
-                <div className="grid grid-cols-3 gap-4 md:gap-8 w-full">
+                <div className="grid grid-cols-3 gap-4 md:gap-8 w-full 2xl:flex flex-col 2xl:max-h-56 2xl:w-1/4 ">
                     <img
                         src={image2}
                         alt=""
-                        className="rounded-3xl w-full h-full cursor-pointer transition ease-in-out hover:opacity-90 duration-500"
+                        className="rounded-3xl w-full h-full cursor-pointer transition ease-in-out hover:opacity-90 duration-500 2xl:w-3/4 mx-auto"
                         onClick={(e) => handleSelection(e)}
+                        onMouseEnter={(e) => handleSelection(e)}
                     />
                     <img
                         src={image4}
                         alt=""
-                        className="rounded-3xl w-full h-full cursor-pointer transition ease-in-out hover:opacity-90 duration-500"
+                        className="rounded-3xl w-full h-full cursor-pointer transition ease-in-out hover:opacity-90 duration-500 2xl:w-3/4 mx-auto"
                         onClick={(e) => handleSelection(e)}
+                        onMouseEnter={(e) => handleSelection(e)}
                     />
                     <img
                         src={image1}
                         alt=""
-                        className="rounded-3xl w-full h-full cursor-pointer transition ease-in-out hover:opacity-90 duration-500"
+                        className="rounded-3xl w-full h-full cursor-pointer transition ease-in-out hover:opacity-90 duration-500 2xl:w-3/4 mx-auto"
                         onClick={(e) => handleSelection(e)}
+                        onMouseEnter={(e) => handleSelection(e)}
                     />
                 </div>
             </div>
