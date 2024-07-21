@@ -4,6 +4,7 @@ import { listingCategories } from "../../data/listings";
 import profile from "../../assets/profile.svg";
 import { MdLocationPin } from "react-icons/md";
 import ChangeLocationModal from "../modals/ChangeLocationModal";
+import { Link } from "react-router-dom";
 
 function NavContent() {
     const [showLocationModal, setShowLocationModal] = React.useState(false);
@@ -26,9 +27,11 @@ function NavContent() {
         <div className="">
             <div className="hidden lg:block">
                 <div className="mb-5">
-                    <Button className="p-4 rounded-md w-full bg-[#710d962a] text-[#720D96] font-semibold transition ease-in-out hover:text-white hover:bg-[#720D96]">
-                        + Create a New Listing
-                    </Button>
+                    <Link to={"/create"}>
+                        <Button className="p-4 rounded-md w-full bg-[#e8d7ee] text-[#720D96] font-semibold transition ease-in-out hover:text-white hover:bg-[#720D96]">
+                            + Create a New Listing
+                        </Button>
+                    </Link>
                 </div>
                 <hr />
                 <div className="pt-5">

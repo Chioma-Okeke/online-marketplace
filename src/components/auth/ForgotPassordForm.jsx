@@ -33,7 +33,7 @@ function ForgotPassordForm() {
                 />
                 {/* <PhoneNumber />
         <HiddenInput /> */}
-                <Button className="w-full md:text-base text-white font-medium px-6 py-4 rounded-md">
+                <Button className="w-full md:text-base text-white font-medium px-6 py-4 rounded-md bg-[#720D96]">
                     Send Email
                 </Button>
             </form>

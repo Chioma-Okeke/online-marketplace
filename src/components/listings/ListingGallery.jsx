@@ -23,6 +23,7 @@ function ListingGallery() {
     };
 
     function handleSelection(e) {
+        console.log(e.target.src)
         setCurrentPicture(e.target.src);
     }
 

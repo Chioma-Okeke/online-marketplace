@@ -4,6 +4,7 @@ import SignIn from "./pages/authPages/SignIn";
 import ForgotPassword from "./pages/authPages/ForgotPassword";
 import SingleListing from "./pages/SingleListing";
 import Listings from "./pages/Listings";
+import CreateListing from "./pages/CreateListing";
 
 
 export function PageRoutes() {
@@ -15,6 +16,7 @@ export function PageRoutes() {
                 <Route exact path="/forgotpassword" element={<ForgotPassword />}/>
                 <Route exact path="/listing" element={<SingleListing />}/>
                 <Route exact path="/listings" element={<Listings />}/>
+                <Route exact path="/create" element={<CreateListing />}/>
             </Routes>
         </Router>
     )

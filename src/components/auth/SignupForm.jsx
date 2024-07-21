@@ -71,7 +71,7 @@ function SignupForm() {
                 />
                 {/* <PhoneNumber />
         <HiddenInput /> */}
-                <Button className="w-full md:text-base text-white font-medium px-6 py-4 rounded-md mt-5">
+                <Button className="w-full md:text-base text-white font-medium px-6 py-4 rounded-md mt-5 bg-[#720D96]">
                     Sign up
                 </Button>
             </form>

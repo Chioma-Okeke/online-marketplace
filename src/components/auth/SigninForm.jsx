@@ -50,7 +50,7 @@ function SigninForm() {
                 <span className="text-end italic text-[#720D96] font-medium text-sm float-end mb-5">
                     <Link to="/forgotpassword">Forgot Password?</Link>
                 </span>
-                <Button className="w-full md:text-base text-white font-medium px-6 py-4 rounded-md">
+                <Button className="w-full md:text-base text-white font-medium px-6 py-4 rounded-md bg-[#720D96]">
                     Sign in
                 </Button>
             </form>
