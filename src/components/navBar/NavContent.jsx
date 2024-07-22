@@ -71,12 +71,12 @@ function NavContent() {
             </div>
             {/* {mobile screen} */}
             <div className="lg:hidden">
-                <div className="flex items-center justify-between text-sm my-2">
+                <div className="flex items-center justify-between text-xs sm:text-sm my-2">
                     <div className="flex items-center gap-2 font-medium">
                         <img
                             src={profile}
                             alt=""
-                            className="cursor-pointer w-8 sm:w-10"
+                            className="cursor-pointer w-6 sm:w-10"
                         />
                         <p className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
                             Inbox

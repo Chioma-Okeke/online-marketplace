@@ -15,8 +15,8 @@ export const listings = [
     {
         image: listingImage,
         id: 1,
-        title: "handbacg",
-        price: "!00 dollars",
+        title: "clothes",
+        price: "$100",
         location: "10km away"
     },
     {

@@ -1,12 +1,11 @@
 import React from "react";
 import profile from "../../assets/profile.svg";
-import FormInput from "../FormInput";
 import { MdLocationPin } from "react-icons/md";
-import { IoNotifications, IoSearch } from "react-icons/io5";
+import { IoNotifications } from "react-icons/io5";
 import ChangeLocationModal from "../modals/ChangeLocationModal";
+import SearchInput from "../SearchInput";
 
 function AppHeader() {
-    const [search, setSearch] = React.useState("");
     const [showLocationModal, setShowLocationModal] = React.useState(false);
 
     function handleLocationToogle() {
@@ -36,22 +35,7 @@ function AppHeader() {
                     </h1>
                     <p className="md:text-2xl font-semibold">Platform</p>
                 </div>
-                <div className="md:flex items-center justify-between md:border-2 border-[#720D96] py-1 pl-5 pr-2 md:w-[40%] max-w-md rounded-3xl">
-                    <FormInput
-                        inputName="search"
-                        inputGroupClassNames="hidden md:block w-full"
-                        inputValue={search}
-                        placeholderText="Search for items..."
-                        inputId="search"
-                        ariaLabelName="search bar"
-                        onChange={(e) => setSearch(e.target.value)}
-                        className="border-r border-white mb-0 bg-transparent border-0 focus:border-0 focus:outline-none w-full flex-1"
-                    />
-                    <div className="bg-[#e4e6eb] md:bg-[#720D96] p-2 rounded-full cursor-pointer">
-                        <IoSearch size={20} color="white" className="hidden md:block"/>
-                        <IoSearch size={20} className="md:hidden"/>
-                    </div>
-                </div>
+                <SearchInput/>
                 <div
                     className="hidden lg:flex items-center gap-1 cursor-pointer"
                     onClick={handleLocationToogle}

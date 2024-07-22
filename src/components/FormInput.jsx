@@ -3,7 +3,10 @@ import React from "react";
 
 const FormInput = React.forwardRef(function FormInput(
     {
+        inputValue,
         onMouseEnter,
+        onBlur,
+        onFocus,
         onMouseLeave,
         inputLabel,
         labelFor,
@@ -36,11 +39,14 @@ const FormInput = React.forwardRef(function FormInput(
                 ref={ref}
                 type={inputType}
                 id={inputId}
+                value={inputValue}
                 name={inputName}
                 placeholder={placeholderText}
                 aria-label={ariaLabelName}
                 onChange={onChange}
                 onMouseLeave={onMouseLeave}
+                onBlur={onBlur}
+                onFocus={onFocus}
                 required
             />
             {inputType === "password" && showPasswordRequirement && (

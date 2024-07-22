@@ -8,15 +8,17 @@ import { ListingsProvider } from "../context/ListingsContext";
 
 function Listings() {
     return (
-        <div className="bg-[#FCFCFD] relative lg:flex justify-between">
-            <NavContainer className="hidden lg:block"/>
-            <div className="flex flex-col relative lg:w-3/4 2xl:w-4/5">
-                <AppHeader />
-                <NavContainer/>
-                <ListingsProvider>
+        <div className=" relative lg:flex justify-between">
+            <ListingsProvider>
+                <NavContainer className="hidden lg:block" />
+                <div className="flex flex-col relative lg:w-3/4 2xl:w-4/5">
+                    <div className="sticky top-0 left-0 bg-white z-20">
+                        <AppHeader />
+                    </div>
+                    <NavContainer />
                     <ListingsGrid />
-                </ListingsProvider>
-            </div>
+                </div>
+            </ListingsProvider>
         </div>
     );
 }
