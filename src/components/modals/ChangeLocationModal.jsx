@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { motion } from "framer-motion";
 import { IoMdArrowBack, IoMdCloseCircle, IoMdSearch } from "react-icons/io";
 import Button from "../reusable/Button";
 import { MdArrowDropDown, MdLocationPin } from "react-icons/md";
@@ -11,10 +10,7 @@ function ChangeLocationModal({ onClose }) {
     const [mouseEnter, setMouseEnter] = React.useState(false);
 
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+        <div
             className=""
         >
             <div className="hidden md:block fixed inset-0 z-50 transition-all duration-500">
@@ -179,7 +175,7 @@ function ChangeLocationModal({ onClose }) {
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 }
 

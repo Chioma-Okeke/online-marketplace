@@ -2,23 +2,53 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 
-function ListingSingle({ title, price, location, img }) {
+function ListingSingle({ title, price, location, img, id }) {
+    const [liked, setLiked] = React.useState(false);
+    const [likedPost, setLikedPosts] = React.useState([]);
+
+    function handleLike(e) {
+        console.log(e.target.id, "event");
+        // let id = e.target.id
+        e.stopPropagation();
+        setLiked(!liked);
+        // if (liked) {
+        //     setLikedPosts(prevState => {
+        //         return [...prevState, id]
+        //     })
+        // }
+        // console.log(likedPost)
+    }
+
     return (
-        <div className="border border-red-400 rounded-md text-lg p-2 sm:p-4">
+        <div className="relative lg:border rounded-md text-lg lg:p-2 transition ease-in-out hover:scale-105 duration-300">
             <Link to={"/listing"} className="cursor-pointer hover:shadow-xl">
                 <div className="mb-2">
-                    <img src={img} alt="" className="w-full rounded-md" />
+                    <img src={img} alt="" className="w-full lg:rounded-md" />
                 </div>
-                <div>
-                    <div className="text-sm md:text-base">
+                <div className="flex justify-between">
+                    <div className="text-sm lg:text-base pl-2">
+                        <p className="font-semibold">{price}</p>
                         <h1>{title}</h1>
-                        <p>{price}</p>
                         <p>{location}</p>
                     </div>
-
                 </div>
             </Link>
+            <div
+                className="absolute top-2 right-2"
+                onClick={(e) => handleLike(e)}
+            >
+                {!liked ? (
+                    <FaRegHeart
+                        id={id}
+                        className="hover:fill-[#720D96]"
+                        cursor={"pointer"}
+                    />
+                ) : (
+                    <FaHeart id={id} color="#720D96" cursor={"pointer"} />
+                )}
+            </div>
         </div>
     );
 }

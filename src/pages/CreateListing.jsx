@@ -13,6 +13,7 @@ function CreateListing() {
     const [mouseEnter, setMouseEnter] = React.useState(false);
     const [images, setImages] = React.useState([]); // Separate state for images
     const [formData, setFormData] = React.useState({})
+    const [activeInput, setActiveInput] = React.useState("")
 
     const handleImagesChange = (images) => {
         setImages(images);
@@ -28,8 +29,17 @@ function CreateListing() {
 		})
     }
 
+    function highlightField (e) {
+        setActiveInput(e.target.id)
+        setTimeout(() => {
+            setActiveInput("")
+        }, 1000);
+        console.log(activeInput)
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
+
         console.log(formData)
 
         const dataToSend = new FormData();
@@ -89,6 +99,8 @@ function CreateListing() {
                             inputId="title"
                             placeholderText="Title"
                             inputValue={formData.title}
+                            // onMouseLeave={() => setActiveInput("")}
+                            onMouseEnter={(e) => highlightField(e)}
                             onChange={(e) => handleChange(e)}
                             className="w-full p-4 border-2 my-3 border-[#D0D5DD] bg-white rounded-md shadow-sm transition ease-in-out hover:border-[#720D96] focus:outline-none focus:border-[#720D96] duration-300"
                         />
@@ -97,6 +109,8 @@ function CreateListing() {
                             inputId="price"
                             placeholderText="Price"
                             inputValue={formData.price}
+                            // onMouseLeave={setActiveInput("")}
+                            onMouseEnter={(e) => highlightField(e)}
                             onChange={(e) => handleChange(e)}
                             className="w-full p-4 border-2 mb-3 border-[#D0D5DD] bg-white rounded-md shadow-sm transition ease-in-out hover:border-[#720D96] focus:outline-none focus:border-[#720D96] duration-300"
                         />
@@ -110,6 +124,8 @@ function CreateListing() {
                             id="message"
                             cols={50}
                             rows={5}
+                            // onMouseLeave={setActiveInput("")}
+                            onMouseEnter={(e) => highlightField(e)}
                             onChange={(e) => handleChange(e)}
                             className="border-2 border-[#ced0d4] shadow-sm w-full rounded-md resize-none p-2 focus:outline-[#720D96] hover:border-[#720D96] text-sm"
                             value={formData.message}
@@ -133,7 +149,7 @@ function CreateListing() {
                     })}
                 </div> */}
                 <div className="md:w-[95%] 2xl:w-[70%] mx-auto">
-                    <PostPreview images={images} formData={formData}/>
+                    <PostPreview images={images} formData={formData} activeInput={activeInput}/>
                 </div>
             </div>
         </div>

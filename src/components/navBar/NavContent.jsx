@@ -5,9 +5,11 @@ import profile from "../../assets/profile.svg";
 import { MdLocationPin } from "react-icons/md";
 import ChangeLocationModal from "../modals/ChangeLocationModal";
 import { Link } from "react-router-dom";
+import MobileCategories from "../modals/MobileCategories";
 
 function NavContent() {
     const [showLocationModal, setShowLocationModal] = React.useState(false);
+    const [showCategories, setShowCategories] = React.useState(false);
 
     function handleLocationToogle() {
         if (!showLocationModal) {
@@ -20,6 +22,20 @@ function NavContent() {
                 .getElementsByTagName("html")[0]
                 .classList.remove("overflow-y-hidden");
             setShowLocationModal(false);
+        }
+    }
+
+    function handleCategories() {
+        if (!showCategories) {
+            document
+                .getElementsByTagName("html")[0]
+                .classList.add("overflow-y-hidden");
+            setShowCategories(true);
+        } else {
+            document
+                .getElementsByTagName("html")[0]
+                .classList.remove("overflow-y-hidden");
+            setShowCategories(false);
         }
     }
 
@@ -53,15 +69,22 @@ function NavContent() {
                     </div>
                 </div>
             </div>
+            {/* {mobile screen} */}
             <div className="lg:hidden">
-                <div className="flex items-center justify-between text-xs sm:text-sm my-2">
-                    <div className="flex items-center gap-2">
+                <div className="flex items-center justify-between text-sm my-2">
+                    <div className="flex items-center gap-2 font-medium">
                         <img
                             src={profile}
                             alt=""
                             className="cursor-pointer w-8 sm:w-10"
                         />
                         <p className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
+                            Inbox
+                        </p>
+                        <Link to={"/create"} className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
+                            Sell
+                        </Link>
+                        <p onClick={handleCategories} className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
                             Categories
                         </p>
                         <p className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
@@ -71,7 +94,7 @@ function NavContent() {
                 </div>
                 <hr />
                 <div
-                    className="flex items-center gap-1 cursor-pointer text-xs sm:text-sm float-right mt-2"
+                    className="flex items-center gap-1 cursor-pointer text-sm float-right mt-2"
                     onClick={handleLocationToogle}
                 >
                     <MdLocationPin size={20} />
@@ -82,6 +105,9 @@ function NavContent() {
             </div>
             {showLocationModal && (
                 <ChangeLocationModal onClose={handleLocationToogle} />
+            )}
+            {showCategories && (
+                <MobileCategories onClose={handleCategories} />
             )}
         </div>
     );
