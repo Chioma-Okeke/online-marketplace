@@ -6,10 +6,13 @@ import { MdLocationPin } from "react-icons/md";
 import ChangeLocationModal from "../modals/ChangeLocationModal";
 import { Link } from "react-router-dom";
 import MobileCategories from "../modals/MobileCategories";
+import { ListingsContext } from "../../context/ListingsContext";
 
 function NavContent() {
     const [showLocationModal, setShowLocationModal] = React.useState(false);
     const [showCategories, setShowCategories] = React.useState(false);
+    const [currentCategory, setCurrentCategory] = React.useState("All")
+    const { showCategory } = React.useContext(ListingsContext);
 
     function handleLocationToogle() {
         if (!showLocationModal) {
@@ -39,6 +42,13 @@ function NavContent() {
         }
     }
 
+    function handleSelection(e) {
+        const category = e.target.id;
+        console.log(category, "calue");
+        showCategory(category)
+        setCurrentCategory(category)
+    }
+
     return (
         <div className="">
             <div className="hidden lg:block">
@@ -57,12 +67,14 @@ function NavContent() {
                             return (
                                 <div
                                     key={id}
-                                    className="flex items-center gap-2 mb-2 p-1 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md"
+                                    id={category}
+                                    onClick={handleSelection}
+                                    className={`flex items-center gap-2 mb-2 p-1 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md ${currentCategory === category ? 'bg-[#e8d7ee] text-[#720d96]' : ''}`}
                                 >
                                     <div className="bg-[#e4e6eb] rounded-full p-2">
-                                        <Icon size={20} />
+                                        <Icon size={20} id={category} />
                                     </div>
-                                    <span>{category}</span>
+                                    <span id={category}>{category}</span>
                                 </div>
                             );
                         })}
@@ -81,10 +93,16 @@ function NavContent() {
                         <p className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
                             Inbox
                         </p>
-                        <Link to={"/create"} className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
+                        <Link
+                            to={"/create"}
+                            className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
+                        >
                             Sell
                         </Link>
-                        <p onClick={handleCategories} className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
+                        <p
+                            onClick={handleCategories}
+                            className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
+                        >
                             Categories
                         </p>
                         <p className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
@@ -106,9 +124,7 @@ function NavContent() {
             {showLocationModal && (
                 <ChangeLocationModal onClose={handleLocationToogle} />
             )}
-            {showCategories && (
-                <MobileCategories onClose={handleCategories} />
-            )}
+            {showCategories && <MobileCategories onClose={handleCategories} />}
         </div>
     );
 }

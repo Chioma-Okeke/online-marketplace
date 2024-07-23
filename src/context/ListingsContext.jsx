@@ -11,12 +11,14 @@ export const ListingsProvider = (props) => {
     function searchListings(query) {
         if (!query) {
             setListings(listingsData);
-        } else {
-            const filteredListings = listingsData.filter(listing =>
-                listing.title.toLowerCase().includes(query.toLowerCase())
-                // listing.description.toLowerCase().includes(query.toLowerCase())
-            )
-            console.log(filteredListings, "filtered")
+        } else if (typeof query === 'string') {
+            const lowerCaseQuery = query.toLowerCase();
+            const filteredListings = listingsData.filter(
+                (listing) =>
+                    listing.title.toLowerCase().includes(lowerCaseQuery)
+                // listing.description.toLowerCase().includes(lowerCaseQuery)
+            );
+            console.log(filteredListings, "filtered");
             setListings(filteredListings);
 
             //updating search History
@@ -26,6 +28,18 @@ export const ListingsProvider = (props) => {
                     ...prevHistory.slice(0, 4),
                 ]);
             }
+        }
+    }
+
+    function showCategory(category) {
+        if (!category || category === "All") {
+            setListings(listingsData);
+        } else {
+            const filteredListings = listingsData.filter((listing) =>
+                listing.category.toLowerCase().includes(category.toLowerCase())
+            );
+            console.log(filteredListings, "in cat")
+            setListings(filteredListings);
         }
     }
 
@@ -40,6 +54,7 @@ export const ListingsProvider = (props) => {
                 searchListings,
                 searchHistory,
                 clearSearchHistory,
+                showCategory,
             }}
         >
             {props.children}
