@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import Button from "../reusable/Button";
 import { listingCategories } from "../../data/listings";
@@ -7,12 +8,16 @@ import ChangeLocationModal from "../modals/ChangeLocationModal";
 import { Link } from "react-router-dom";
 import MobileCategories from "../modals/MobileCategories";
 import { ListingsContext } from "../../context/ListingsContext";
+import { FaShop } from "react-icons/fa6";
+import { IoNotifications } from "react-icons/io5";
+import { AuthContext } from "../../context/AuthContext";
 
 function NavContent() {
     const [showLocationModal, setShowLocationModal] = React.useState(false);
     const [showCategories, setShowCategories] = React.useState(false);
-    const [currentCategory, setCurrentCategory] = React.useState("All")
+    const [currentCategory, setCurrentCategory] = React.useState("Browse All");
     const { showCategory } = React.useContext(ListingsContext);
+    const { isAuthenticated } = React.useContext(AuthContext);
 
     function handleLocationToogle() {
         if (!showLocationModal) {
@@ -44,9 +49,9 @@ function NavContent() {
 
     function handleSelection(e) {
         const category = e.target.id;
-        console.log(category, "calue");
-        showCategory(category)
-        setCurrentCategory(category)
+        console.log(category, "value");
+        showCategory(category);
+        setCurrentCategory(category);
     }
 
     return (
@@ -59,8 +64,33 @@ function NavContent() {
                         </Button>
                     </Link>
                 </div>
-                <hr />
                 <div className="pt-5">
+                    <div
+                        onClick={handleSelection}
+                        id="Browse All"
+                        className={`flex items-center gap-2 mb-2 p-1 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md ${
+                            currentCategory === "Browse All"
+                                ? "bg-[#e8d7ee] text-[#720d96]"
+                                : ""
+                        }`}
+                    >
+                        <div className="bg-[#e4e6eb] rounded-full p-2">
+                            <FaShop size={20} />
+                        </div>
+                        <span>Browse All</span>
+                    </div>
+                    {isAuthenticated && (
+                        <Link
+                            to={"/notifications"}
+                            className={`flex items-center gap-2 mb-2 p-1 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md`}
+                        >
+                            <div className="bg-[#e4e6eb] rounded-full p-2 w-fit">
+                                <IoNotifications size={20} />
+                            </div>
+                            <span>Notifications</span>
+                        </Link>
+                    )}
+                    <hr className="my-3" />
                     <h1 className="font-semibold text-lg">Categories</h1>
                     <div className="py-3">
                         {listingCategories.map(({ id, Icon, category }) => {
@@ -69,7 +99,11 @@ function NavContent() {
                                     key={id}
                                     id={category}
                                     onClick={handleSelection}
-                                    className={`flex items-center gap-2 mb-2 p-1 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md ${currentCategory === category ? 'bg-[#e8d7ee] text-[#720d96]' : ''}`}
+                                    className={`flex items-center gap-2 mb-2 p-1 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md ${
+                                        currentCategory === category
+                                            ? "bg-[#e8d7ee] text-[#720d96]"
+                                            : ""
+                                    }`}
                                 >
                                     <div className="bg-[#e4e6eb] rounded-full p-2">
                                         <Icon size={20} id={category} />
@@ -105,9 +139,11 @@ function NavContent() {
                         >
                             Categories
                         </p>
-                        <p className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
-                            Notifications
-                        </p>
+                        {isAuthenticated && (
+                            <p className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
+                                Notifications
+                            </p>
+                        )}
                     </div>
                 </div>
                 <hr />

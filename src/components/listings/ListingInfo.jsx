@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "../reusable/Button";
 import { FaHeart } from "react-icons/fa";
 import { IoIosShareAlt } from "react-icons/io";
@@ -6,18 +6,26 @@ import image from "../../assets/image1.png";
 import SellerModal from "../modals/SellerModal";
 import { TiMessages } from "react-icons/ti";
 import MessageModal from "../modals/MessageModal";
+import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function ListingInfo() {
     const [showSellerModal, setShowSellerModal] = React.useState(false);
     const [showMessageModal, setShowMessageModal] = React.useState(false);
     const [showFullDescription, setShowFullDescription] = React.useState(false);
+    const { isAuthenticated } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     function handleMessageToogle() {
         if (!showMessageModal) {
-            document
-                .getElementsByTagName("html")[0]
-                .classList.add("overflow-y-hidden");
-            setShowMessageModal(true);
+            if (isAuthenticated) {
+                document
+                    .getElementsByTagName("html")[0]
+                    .classList.add("overflow-y-hidden");
+                setShowMessageModal(true);
+            } else {
+                navigate("/signin")
+            }
         } else {
             document
                 .getElementsByTagName("html")[0]
@@ -65,9 +73,9 @@ function ListingInfo() {
                     >
                         <TiMessages size={25} />
                     </Button>
-                    <Button className="bg-white border border-[#720D96] py-2 px-3 rounded-full md:rounded-md hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
+                    {isAuthenticated && <Button className="bg-white border border-[#720D96] py-2 px-3 rounded-full md:rounded-md hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
                         <FaHeart size={25} />
-                    </Button>
+                    </Button>}
                     <Button className="bg-white border border-[#720D96] py-2 px-3 rounded-full md:rounded-md hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
                         <IoIosShareAlt size={25} />
                     </Button>

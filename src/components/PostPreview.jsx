@@ -5,7 +5,7 @@ import image from "../assets/image1.png";
 
 function PostPreview({ images, formData, activeInput }) {
     const [currentPicture, setCurrentPicture] = useState(null);
-    const { title, price, message } = formData;
+    const { name, price, message } = formData;
 
     useEffect(() => {
         if (images.length > 0) {
@@ -17,15 +17,15 @@ function PostPreview({ images, formData, activeInput }) {
         }
     }, [images]);
 
-    const handleSelection = (file) => {
-        if (file instanceof File) {
-            const objectUrl = URL.createObjectURL(file);
-            setCurrentPicture(objectUrl);
+    // const handleSelection = (file) => {
+    //     if (file instanceof File) {
+    //         const objectUrl = URL.createObjectURL(file);
+    //         setCurrentPicture(objectUrl);
 
-            // Clean up the object URL when the selection changes
-            return () => URL.revokeObjectURL(objectUrl);
-        }
-    };
+    //         // Clean up the object URL when the selection changes
+    //         return () => URL.revokeObjectURL(objectUrl);
+    //     }
+    // };
 
     return (
         <div className="border bg-white p-5 rounded-md">
@@ -58,15 +58,15 @@ function PostPreview({ images, formData, activeInput }) {
                         </p>
                     </div>
                 ) : (
-                    <div className="w-[60%] py-4">
+                    <div className="w-[60%] py-4 relative">
                         {currentPicture && (
                             <img
                                 src={currentPicture}
                                 alt="Current Preview"
-                                className="w-[60%] min-h-[300px] max-h-80 mx-auto rounded-md object-scale-down"
+                                className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full min-h-[300px] max-h-80 mx-auto rounded-md object-scale-down"
                             />
                         )}
-                        <div className="grid grid-cols-3 place-items-center gap-4 md:gap-8 w-full p-3">
+                        {/* <div className="grid grid-cols-3 place-items-center gap-4 md:gap-8 w-full p-3">
                             {images.map((fileData, index) => {
                                 const objectUrl = URL.createObjectURL(
                                     fileData.file
@@ -86,21 +86,21 @@ function PostPreview({ images, formData, activeInput }) {
                                     />
                                 );
                             })}
-                        </div>
+                        </div> */}
                     </div>
                 )}
                 <div className="w-[40%] p-5 text-sm">
                     <div className="mb-5">
                         <div
                             className={`text-2xl font-bold mb-2 ${
-                                activeInput === "title"
+                                activeInput === "name"
                                     ? "text-[#720D96]"
-                                    : title
+                                    : name
                                     ? "text-[#141414]"
                                     : "text-[#888888]"
                             }`}
                         >
-                            {title ? <h1>{title}</h1> : <h1>Title</h1>}
+                            {name ? <h1>{name.toUpperCase()}</h1> : <h1>Title</h1>}
                         </div>
                         <div
                             className={`text-base font-medium ${

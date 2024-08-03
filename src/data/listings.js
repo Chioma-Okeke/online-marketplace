@@ -9,7 +9,7 @@ import { MdSportsCricket } from "react-icons/md";
 import { TbHorseToy } from "react-icons/tb";
 import { GiSpanner } from "react-icons/gi";
 import { GiViolin } from "react-icons/gi";
-import { FaStapler, FaShop } from "react-icons/fa6";
+import { FaStapler } from "react-icons/fa6";
 
 export const listings = [
     {
@@ -367,11 +367,11 @@ export const listings = [
 ]
 
 export const listingCategories = [
-    {
-        id: 1,
-        Icon: FaShop,
-        category: "All"
-    },
+    // {
+    //     id: 1,
+    //     Icon: FaShop,
+    //     category: "All"
+    // },
     {
         id: 2,
         Icon: FaCarAlt,
@@ -427,14 +427,14 @@ export const listingCategories = [
         Icon: FaStapler,
         category: "Office supplies"
     },
-    {
-        id: 13,
-        Icon: FaCarAlt,
-        category: "Vehicles"
-    },
-    {
-        id: 14,
-        Icon: FaCarAlt,
-        category: "Vehicles"
-    },
+    // {
+    //     id: 13,
+    //     Icon: FaCarAlt,
+    //     category: "Vehicles"
+    // },
+    // {
+    //     id: 14,
+    //     Icon: FaCarAlt,
+    //     category: "Vehicles"
+    // },
 ]

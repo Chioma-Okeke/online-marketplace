@@ -3,6 +3,7 @@ import React from "react";
 
 const FormInput = React.forwardRef(function FormInput(
     {
+        isRequired,
         inputValue,
         onMouseEnter,
         onBlur,
@@ -26,12 +27,15 @@ const FormInput = React.forwardRef(function FormInput(
     return (
         <div className={inputGroupClassNames}>
             {inputLabel && (
-                <label
-                    className={`block text-[#101928] text-sm font-medium ${labelClasses}`}
-                    htmlFor={labelFor}
-                >
-                    {inputLabel}
-                </label>
+                <div className="flex items-start">
+                    <label
+                        className={`block text-[#101928] text-sm font-medium ${labelClasses}`}
+                        htmlFor={labelFor}
+                    >
+                        {inputLabel}
+                    </label>
+                    {isRequired && <span className="text-red-600 text-sm">*</span>}
+                </div>
             )}
             <input
                 onMouseEnter={onMouseEnter}

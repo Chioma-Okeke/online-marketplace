@@ -1,8 +1,11 @@
 import React from "react";
 import FormInput from "../FormInput";
 import Button from "../reusable/Button";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function ForgotPassordForm() {
+    const navigate = useNavigate()
     const [formData, setFormData] = React.useState({});
 
     function handleChange(e) {
@@ -16,9 +19,20 @@ function ForgotPassordForm() {
         });
     }
 
+    async function resetPassword (e) {
+        e.preventDefault()
+        try {
+            await axios.post("https://composed-visually-newt.ngrok-free.app/api/auth/reset", formData)
+            alert("You will receive an email shortly")
+            navigate("/signin")
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={(e) => resetPassword(e)}>
                 <FormInput
                     inputLabel="Email Address"
                     labelFor="email"

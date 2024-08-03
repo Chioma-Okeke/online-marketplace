@@ -1,12 +1,27 @@
 /* eslint-disable react/prop-types */
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { listings as listingsData } from "../data/listings";
+import axios from "axios";
 
 export const ListingsContext = createContext();
 
 export const ListingsProvider = (props) => {
     const [listings, setListings] = useState(listingsData);
     const [searchHistory, setSearchHistory] = useState([]);
+
+    useEffect(() => {
+        async function getListings () {
+            try {
+                const response = await axios.get("https://composed-visually-newt.ngrok-free.app/listing")
+                const listingsData = response.json()
+                console.log(listingsData)
+            } catch(err) {
+                console.error(err)
+            }
+        }
+
+        getListings()
+    }, [])
 
     function searchListings(query) {
         if (!query) {
@@ -32,7 +47,7 @@ export const ListingsProvider = (props) => {
     }
 
     function showCategory(category) {
-        if (!category || category === "All") {
+        if (!category || category === "Browse All") {
             setListings(listingsData);
         } else {
             const filteredListings = listingsData.filter((listing) =>

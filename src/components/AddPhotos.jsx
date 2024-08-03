@@ -13,11 +13,11 @@ const AddPhotos = ({ onImagesChange }) => {
 
     const handleFileChange = (event) => {
         const files = Array.from(event.target.files);
-        const maxFilesAllowed = 3;
+        const maxFilesAllowed = 1;
         const totalFiles = selectedFiles.length + files.length;
 
         if (totalFiles > maxFilesAllowed) {
-            alert(`You can only add up to ${maxFilesAllowed} images.`);
+            alert(`You can only ${maxFilesAllowed} image.`);
             return;
         }
 

@@ -4,15 +4,18 @@ import Container from "../components/container/Container";
 import ListingInfo from "../components/listings/ListingInfo";
 // import AppHeader from "../components/shared/AppHeader";
 import ListingHeader from "../components/listings/ListingHeader";
+import { SingleListingProvider } from "../context/SingleListingContext";
 
-function SingleListing() {
+function SingleListing({isLoggedIn}) {
     return (
         <Container className="">
-            <ListingHeader/>
-            <div className="flex w-full min-h-[100vh] flex-col md:flex-row md:py-8">
-                <ListingGallery />
-                <ListingInfo/>
-            </div>
+            <SingleListingProvider>
+                <ListingHeader isLoggedIn={isLoggedIn}/>
+                <div className="flex w-full min-h-[100vh] flex-col md:flex-row md:py-8">
+                    <ListingGallery />
+                    <ListingInfo />
+                </div>
+            </SingleListingProvider>
         </Container>
     );
 }
