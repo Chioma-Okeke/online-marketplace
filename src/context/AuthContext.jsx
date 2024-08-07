@@ -16,7 +16,7 @@ export default function AuthProvider({ children }) {
             setUserData(user);
             setIsAuthenticated(true);
         }
-    }, []);
+    }, [storedData]);
 
     function login(newToken, newData) {
         localStorage.setItem(

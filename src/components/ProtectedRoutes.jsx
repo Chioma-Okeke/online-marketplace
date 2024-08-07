@@ -1,15 +1,18 @@
-// import React from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useContext } from 'react';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function ProtectedRoutes() {
-    const isLoggedIn = window.localStorage.getItem("loggedIn");
-    const location = useLocation()
+    const { isAuthenticated } = useContext(AuthContext);
+    const location = useLocation();
 
-    return isLoggedIn ? (
-        <Outlet />
-    ) : (
-        <Navigate to="/signin" state={{ from: location }} />
-    );
+    if (!isAuthenticated) {
+        // Store the initial URL in sessionStorage
+        sessionStorage.setItem("redirectBackTo", location.pathname);
+        return <Navigate to="/signin" state={{ from: location }} />;
+    }
+
+    return <Outlet />;
 }
 
 export default ProtectedRoutes;

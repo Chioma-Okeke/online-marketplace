@@ -23,7 +23,7 @@ function ListingSingle({ title, price, location, img, id }) {
 
     return (
         <div className="relative lg:border rounded-md text-lg lg:p-2 transition ease-in-out hover:scale-105 duration-300">
-            <Link to={"/listing"} className="cursor-pointer hover:shadow-xl">
+            <Link to={"/listing"} className="cursor-pointer hover:shadow-xl" onClick={window.scrollTo(0,0)}>
                 <div className="mb-2">
                     <img src={img} alt="" className="w-full lg:rounded-md" />
                 </div>

@@ -1,8 +1,12 @@
 import React from "react";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import FormInput from "../FormInput";
 import Button from "../reusable/Button";
-import axios from "axios";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import UserAuthentication from "../../services/AuthServices";
+import FetchClient from "../../ServiceClients/FetchClient";
 
 function ForgotPassordForm() {
     const navigate = useNavigate()
@@ -21,12 +25,14 @@ function ForgotPassordForm() {
 
     async function resetPassword (e) {
         e.preventDefault()
+        const authenticateUser = new UserAuthentication(FetchClient)
         try {
-            await axios.post("https://composed-visually-newt.ngrok-free.app/api/auth/reset", formData)
-            alert("You will receive an email shortly")
-            navigate("/signin")
+            await authenticateUser.resetPassword(formData)
+            toast.success("You will receive an email shortly")
+            navigate("/changepassword")
         } catch (err) {
             console.error(err)
+            toast.error("There was an error while resetting your password. Try again.")
         }
     }
 
@@ -51,6 +57,7 @@ function ForgotPassordForm() {
                     Send Email
                 </Button>
             </form>
+            <ToastContainer/>
         </div>
     );
 }

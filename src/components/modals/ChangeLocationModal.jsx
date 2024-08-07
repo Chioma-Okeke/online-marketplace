@@ -5,12 +5,16 @@ import Button from "../reusable/Button";
 import { MdArrowDropDown, MdLocationPin } from "react-icons/md";
 import FormInput from "../FormInput";
 import map from "../../assets/model-map.png";
+import { motion } from "framer-motion";
 
 function ChangeLocationModal({ onClose }) {
     const [mouseEnter, setMouseEnter] = React.useState(false);
 
     return (
-        <div
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1}}
+            exit={{ opacity: 0  }}
             className=""
         >
             <div className="hidden md:block fixed inset-0 z-50 transition-all duration-500">
@@ -175,7 +179,7 @@ function ChangeLocationModal({ onClose }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

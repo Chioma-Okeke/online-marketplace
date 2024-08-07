@@ -1,47 +1,45 @@
+import { lazy, Suspense } from "react";
 import {
     BrowserRouter as Router,
     Routes,
     Route,
     Navigate,
 } from "react-router-dom";
-import PropTypes from "prop-types";
-import SignUp from "./pages/authPages/SignUp";
-import SignIn from "./pages/authPages/SignIn";
-import ForgotPassword from "./pages/authPages/ForgotPassword";
-import SingleListing from "./pages/SingleListing";
-import Listings from "./pages/Listings";
-import CreateListing from "./pages/CreateListing";
-import SearchPage from "./pages/SearchPage";
-import Home from "./pages/Home";
-import Notifications from "./pages/Notifications";
 import ProtectedRoutes from "./components/ProtectedRoutes";
-import { useContext } from "react";
-import { AuthContext } from "./context/AuthContext";
+import PropTypes from "prop-types";
+const SignUp = lazy(() => import("./pages/authPages/SignUp"));
+const SignIn = lazy(() => import("./pages/authPages/SignIn"));
+const ForgotPassword = lazy(() => import("./pages/authPages/ForgotPassword"));
+const SingleListing = lazy(() => import("./pages/SingleListing"));
+const Listings = lazy(() => import("./pages/Listings"));
+const CreateListing = lazy(() => import("./pages/CreateListing"));
+const SearchPage = lazy(() => import("./pages/SearchPage"));
+const Home = lazy(() => import("./pages/Home"));
+const Notifications = lazy(() => import("./pages/Notifications"));
+const UserListings = lazy(() => import("./pages/UserListings"));
+const ListingsBought = lazy(() => import("./pages/ListingsBought"));
+const Favorites = lazy(() => import("./pages/Favorites"));
+const ChangePassword = lazy(() => import("./pages/authPages/ChangePassword"))
 
 export function PageRoutes() {
-    const {isAuthenticated} = useContext(AuthContext)
     return (
         <Router>
-            <Routes>
-                {/* unauthorized route  */}
-                {!isAuthenticated && (
-                    <>
-                        <Route exact path="/" element={<Home />} />
-                        <Route exact path="/signup" element={<SignUp />} />
-                        <Route exact path="/signin" element={<SignIn />} />
-                        <Route
-                            exact
-                            path="/listing"
-                            element={<SingleListing />}
-                        />
-                        <Route
-                            exact
-                            path="/searchmarketplace"
-                            element={<SearchPage />}
-                        />
-                    </>
-                )}
-                <Route element={<ProtectedRoutes />}>
+            <Suspense fallback={""}>
+                <Routes>
+                    {/* unauthorized route  */}
+                    <Route exact path="/" element={<Home />} />
+                    <Route exact path="/signup" element={<SignUp />} />
+                    <Route exact path="/signin" element={<SignIn />} />
+                    <Route exact path="/listing" element={<SingleListing />} />
+                    <Route exact path="/dashboard" element={<UserListings />} />
+                    <Route exact path="/selling" element={<UserListings />} />
+                    <Route exact path="/buying" element={<ListingsBought />} />
+                    <Route exact path="/favorites" element={<Favorites />} />
+                    <Route
+                        exact
+                        path="/searchmarketplace"
+                        element={<SearchPage />}
+                    />
                     <Route
                         exact
                         path="/forgotpassword"
@@ -49,17 +47,25 @@ export function PageRoutes() {
                     />
                     <Route
                         exact
-                        path="/listings"
-                        element={<Listings/>}
+                        path="/changepassword"
+                        element={<ChangePassword />}
                     />
-                    <Route exact path="/create" element={<CreateListing />} />
-                    <Route
-                        exact
-                        path="/notifications"
-                        element={<Notifications />}
-                    />
-                </Route>
-                {/* <Route element={<ProtectedRoutes />}>
+
+                    {/* Protected Routes */}
+                    <Route element={<ProtectedRoutes />}>
+                        <Route exact path="/listings" element={<Listings />} />
+                        <Route
+                            exact
+                            path="/create"
+                            element={<CreateListing />}
+                        />
+                        <Route
+                            exact
+                            path="/notifications"
+                            element={<Notifications />}
+                        />
+                    </Route>
+                    {/* <Route element={<ProtectedRoutes />}>
                     <Route exact path="/signup" element={<SignUp />} />
                     <Route exact path="/signin" element={<SignIn />} />
                     <Route
@@ -111,8 +117,10 @@ export function PageRoutes() {
                         </>
                     )}
                 </Route> */}
-                <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
+                    {/* Catch-all route */}
+                    <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+            </Suspense>
         </Router>
     );
 }

@@ -1,9 +1,9 @@
 import React from "react";
-import PageLayout from "../components/shared/PageLayout";
+import PageLayout from "../components/shared/Layouts/PageLayout";
 
 function Notifications() {
     return (
-        <PageLayout>
+        <PageLayout pageName={"Notifications"}>
             <h1>Hello there</h1>
         </PageLayout>
     );

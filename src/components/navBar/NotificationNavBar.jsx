@@ -11,15 +11,16 @@ import { ListingsContext } from "../../context/ListingsContext";
 import { FaShop } from "react-icons/fa6";
 import { IoNotifications } from "react-icons/io5";
 import { AuthContext } from "../../context/AuthContext";
+import { AnimatePresence } from "framer-motion";
 
-function NavContent() {
+function NotificationNavBar() {
     const [showLocationModal, setShowLocationModal] = React.useState(false);
     const [showCategories, setShowCategories] = React.useState(false);
     const [currentCategory, setCurrentCategory] = React.useState("Browse All");
     const { showCategory } = React.useContext(ListingsContext);
     const { isAuthenticated } = React.useContext(AuthContext);
 
-    function handleLocationToogle() {
+    function handleLocationToggle() {
         if (!showLocationModal) {
             document
                 .getElementsByTagName("html")[0]
@@ -121,13 +122,11 @@ function NavContent() {
             <div className="lg:hidden">
                 <div className="flex items-center justify-between text-xs sm:text-sm my-2">
                     <div className="flex items-center gap-2 font-medium">
-                        <Link to={"/selling"}>
-                            <img
-                                src={profile}
-                                alt=""
-                                className="cursor-pointer w-6 sm:w-10"
-                            />
-                        </Link>
+                        <img
+                            src={profile}
+                            alt=""
+                            className="cursor-pointer w-6 sm:w-10"
+                        />
                         <p className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
                             Inbox
                         </p>
@@ -153,7 +152,7 @@ function NavContent() {
                 <hr />
                 <div
                     className="flex items-center gap-1 cursor-pointer text-sm float-right mt-2"
-                    onClick={handleLocationToogle}
+                    onClick={handleLocationToggle}
                 >
                     <MdLocationPin size={20} />
                     <span className="hover:underline text-[#720D96]">
@@ -161,12 +160,14 @@ function NavContent() {
                     </span>
                 </div>
             </div>
+            <AnimatePresence>
             {showLocationModal && (
-                <ChangeLocationModal onClose={handleLocationToogle} />
+                <ChangeLocationModal onClose={handleLocationToggle} />
             )}
+            </AnimatePresence>
             {showCategories && <MobileCategories onClose={handleCategories} />}
         </div>
     );
 }
 
-export default NavContent;
+export default NotificationNavBar;

@@ -10,7 +10,9 @@ import FormInput from "../components/FormInput";
 import Button from "../components/reusable/Button";
 import { listingCategories } from "../data/listings";
 import { MdLocationPin } from "react-icons/md";
-import axios from "axios";
+// import axios from "axios";
+import ListingService from "../services/Listing";
+import FetchClient from "../ServiceClients/FetchClient";
 
 function CreateListing() {
     const [mouseEnter, setMouseEnter] = React.useState(false);
@@ -45,14 +47,11 @@ function CreateListing() {
 
     function highlightField(e) {
         setActiveInput(e.target.id);
-        // setTimeout(() => {
-        //     setActiveInput("");
-        // }, 1000);
-        // console.log(activeInput);
     }
 
     async function handleSubmit(event) {
         event.preventDefault();
+        const listingService = new ListingService(FetchClient)
         try {
             // Converting files to Base64
             const filesBase64Promises = images.map((fileData) =>
@@ -73,10 +72,7 @@ function CreateListing() {
                 file: filesBase64[0],
                 listingData: JSON.stringify(formData),
             };
-            const response = await axios.post(
-                "https://composed-visually-newt.ngrok-free.app/listing/create",
-                listingInfo
-            );
+            const response = listingService.createListing(listingInfo)
             alert("Successful");
             console.log(response.data)
         } catch (err) {

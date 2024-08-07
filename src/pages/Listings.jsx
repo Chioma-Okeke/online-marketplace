@@ -6,6 +6,7 @@ import ListingsGrid from "../components/listings/ListingsGrid";
 import NavContainer from "../components/navBar/NavContainer";
 import AppHeader from "../components/shared/AppHeader";
 import { ListingsProvider } from "../context/ListingsContext";
+import { ToastContainer } from "react-toastify";
 
 function Listings() {
     return (
@@ -19,6 +20,7 @@ function Listings() {
                     <NavContainer />
                     <ListingsGrid />
                 </div>
+                <ToastContainer/>
             </ListingsProvider>
         </div>
     );

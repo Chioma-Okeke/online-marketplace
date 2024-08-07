@@ -1,13 +1,17 @@
 // import React from "react";
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import FormInput from "../FormInput";
 import Button from "../reusable/Button";
-import axios from "axios"
+// import axios from "axios"
 import { useNavigate } from "react-router-dom";
-import { AuthContext} from "../../context/AuthContext";
+// import { AuthContext} from "../../context/AuthContext";
+import UserAuthentication from "../../services/AuthServices";
+import FetchClient from "../../ServiceClients/FetchClient";
 
 function SignupForm() {
-    const {login} = useContext(AuthContext)
+    // const {login} = useContext(AuthContext)
     const [formData, setFormData] = useState({});
     const navigate = useNavigate()
 
@@ -25,17 +29,20 @@ function SignupForm() {
     async function handleSubmit(e) {
         e.preventDefault();
         console.log(formData, "data");
+        const userAuthentication = new UserAuthentication(FetchClient)
         try {
-            const res = await axios.post('https://composed-visually-newt.ngrok-free.app/api/auth/register', formData)
+            const res = await userAuthentication.registerUser(formData)
             // const data = await res.json()
             console.log(res, "response")
             if (res.status === 201) {
                 alert("You have successfully signed up.")
                 navigate("/signin")
-                login(res.data.token, res.data.user)
+                toast.success("You have successfully signed up.")
+                // login(res.data.token, res.data.user)
             }
         } catch (err) {
             console.error(err)
+            toast.error("An error occurred while registering you.")
         }
     }
 
@@ -101,6 +108,7 @@ function SignupForm() {
                     Sign up
                 </Button>
             </form>
+            <ToastContainer/>
         </div>
     );
 }

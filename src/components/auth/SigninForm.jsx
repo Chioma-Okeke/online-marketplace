@@ -4,23 +4,23 @@ import FormInput from "../FormInput";
 import Button from "../reusable/Button";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"
+// import axios from "axios"
 import { AuthContext } from "../../context/AuthContext";
+import UserAuthentication from "../../services/AuthServices";
+import FetchClient from "../../ServiceClients/FetchClient";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function SigninForm() {
     const [formData, setFormData] = useState({});
-    const {login} = useContext(AuthContext)
-    const navigate = useNavigate()
+    const { login } = useContext(AuthContext);
+    const navigate = useNavigate();
     const location = useLocation();
 
-    const from = location.state?.from?.pathname || '/listings'
-
-    useEffect(() => {
-        // Clear the stored URL if the user navigates away from the sign-in page
-        return () => {
-            sessionStorage.removeItem("redirectBackTo");
-        };
-    }, []);
+    const from =
+        location.state?.from?.pathname ||
+        sessionStorage.getItem("redirectBackTo") ||
+        "/listings";
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -36,19 +36,29 @@ function SigninForm() {
     async function handleSubmit(e) {
         e.preventDefault();
         console.log(formData, "data");
+        const userAuthentication = new UserAuthentication(FetchClient);
         try {
-            const res = await axios.post('https://composed-visually-newt.ngrok-free.app/api/auth/authenticate', formData)
+            const res = await userAuthentication.authenticateUser(formData);
             // const data = await res.json()
-            console.log(res, "response")
+            console.log(res, "response");
             if (res.status === 201) {
-                alert("You have successfully signed up.")
-                navigate(from)
-                login(res.data.token, res.data.user)
+                toast.success("You have successfully signed in.");
+                navigate(from);
+                login(res.data.token, res.data.user);
             }
         } catch (err) {
-            console.error(err)
+            console.error(err);
+            toast.error("There was a problem when logging in.");
         }
     }
+
+    useEffect(() => {
+        console.log(sessionStorage.getItem("redirectBackTo"));
+        // Clear the stored URL if the user navigates away from the sign-in page
+        return () => {
+            sessionStorage.removeItem("redirectBackTo");
+        };
+    }, []);
 
     return (
         <div>
@@ -88,6 +98,7 @@ function SigninForm() {
                     Sign in
                 </Button>
             </form>
+            <ToastContainer />
         </div>
     );
 }
