@@ -14,7 +14,7 @@ function reducer (state, action) {
             return state;
     }
 }
-function ListingHeader({ isLoggedIn }) {
+function ListingHeader() {
     const {isAuthenticated} = useContext(AuthContext)
     const [mouseEnter, setMouseEnter] = React.useState(false);
     const [backToPage, dispatch] = React.useReducer(

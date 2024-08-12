@@ -11,7 +11,7 @@ function SellingListings() {
 
     return (
         <section>
-            <div className="flex items-center p-3 gap-3 w-full">
+            <div className="flex items-center p-3 gap-3 w-full md:hidden">
                 <div className="w-[10%]">
                     <Link>
                         <img
@@ -45,7 +45,7 @@ function SellingListings() {
                     })}
                 </div>
             ) : (
-                <p className="text-center p-3 border-t-2">
+                <p className="text-center p-3 border-t-2 md:border-none text-xl font-semibold text-gray-400">
                     Listings that you are selling on marketplace will appear here.
                 </p>
             )}

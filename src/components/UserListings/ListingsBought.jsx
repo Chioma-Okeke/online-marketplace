@@ -23,7 +23,7 @@ function ListingsBought() {
                     })}
                 </div>
             ) : (
-                <p className="text-center p-3">
+                <p className="text-center p-3 text-xl font-semibold text-gray-400">
                     Listings that you are buying on marketplace will appear here.
                 </p>
             )}

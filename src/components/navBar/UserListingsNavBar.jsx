@@ -5,16 +5,16 @@ import { IoMdArrowBack } from "react-icons/io";
 import { MdAnalytics } from "react-icons/md";
 
 import Button from "../reusable/Button";
+import profile from "../../assets/profile.svg";
 
 function UserListingsNavBar({ pageName }) {
-
     return (
         <div className="">
             <div className="hidden md:block">
                 <header>
                     <div>
                         <Link
-                            // to={`${backToPage}`}
+                            to={"/listings"}
                             className="flex items-center gap-2 cursor-pointer"
                         >
                             <div className="p-1 rounded-full transition ease-in-out hover:bg-[#e8d7ee] duration-300">
@@ -42,9 +42,7 @@ function UserListingsNavBar({ pageName }) {
                             );
                         }}
                     >
-                        <div
-                            className={`bg-[#e4e6eb] rounded-full p-2`}
-                        >
+                        <div className={`bg-[#e4e6eb] rounded-full p-2`}>
                             <MdAnalytics size={20} id="Seller dashboard" />
                         </div>
                         <span id="Seller dashboard">Seller dashboard</span>
@@ -59,9 +57,7 @@ function UserListingsNavBar({ pageName }) {
                             );
                         }}
                     >
-                        <div
-                            className={`bg-[#e4e6eb] rounded-full p-2`}
-                        >
+                        <div className={`bg-[#e4e6eb] rounded-full p-2`}>
                             <MdAnalytics size={20} id="Your listings" />
                         </div>
                         <span id="Your listings">Your listings</span>
@@ -76,9 +72,7 @@ function UserListingsNavBar({ pageName }) {
                             );
                         }}
                     >
-                        <div
-                            className={`bg-[#e4e6eb] rounded-full p-2`}
-                        >
+                        <div className={`bg-[#e4e6eb] rounded-full p-2`}>
                             <MdAnalytics size={20} id="Listings Bought" />
                         </div>
                         <span id="Listings Bought">Listings Bought</span>
@@ -93,12 +87,25 @@ function UserListingsNavBar({ pageName }) {
                             );
                         }}
                     >
-                        <div
-                            className={`bg-[#e4e6eb] rounded-full p-2 `}
-                        >
+                        <div className={`bg-[#e4e6eb] rounded-full p-2 `}>
                             <MdAnalytics size={20} id="Favorites" />
                         </div>
                         <span id="Favorites">Favorites</span>
+                    </NavLink>
+                    <NavLink
+                        to={"/userprofile"}
+                        id="UserProfile"
+                        className={({ isActive }) => {
+                            return (
+                                "flex items-center gap-2 p-2 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md " +
+                                (isActive ? "bg-[#e8d7ee] text-[#720d96]" : "")
+                            );
+                        }}
+                    >
+                        <div>
+                            <img src={profile} alt="" id="userProfile" />
+                        </div>
+                        <span id="userProfile w-5">User Profile</span>
                     </NavLink>
                 </div>
                 {/* <div className="pt-5">

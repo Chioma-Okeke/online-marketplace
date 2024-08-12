@@ -16,6 +16,8 @@ function NavContainer({ className, pageName }) {
                     <UserListingsNavBar pageName={"Buying"} />
                 ): pageName === "Favorites" ? (
                     <UserListingsNavBar pageName={"Favorites"} />
+                ): pageName === "User Profile" ? (
+                    <UserListingsNavBar pageName={"User Profile"} />
                 ): <></>}
             </div>
         </section>

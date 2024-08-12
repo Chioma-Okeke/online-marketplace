@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import SellingListings from "./SellingListings";
 import ListingsBought from "./ListingsBought";
 import FavoriteListings from "./FavoriteListings";
+import UserProfile from "./UserProfile";
 
 function MainPage({pageName}) {
     const [pageContent, setPageContent] = useState(() => SellingListings)
@@ -20,6 +21,10 @@ function MainPage({pageName}) {
             }
             case "Favorites": {
                 setPageContent(() => FavoriteListings)
+                break;
+            }
+            case "User Profile": {
+                setPageContent(() => UserProfile)
                 break;
             }
         }

@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import PropTypes from "prop-types";
+import UserProfile from "./pages/UserProfile";
 const SignUp = lazy(() => import("./pages/authPages/SignUp"));
 const SignIn = lazy(() => import("./pages/authPages/SignIn"));
 const ForgotPassword = lazy(() => import("./pages/authPages/ForgotPassword"));
@@ -35,6 +36,7 @@ export function PageRoutes() {
                     <Route exact path="/selling" element={<UserListings />} />
                     <Route exact path="/buying" element={<ListingsBought />} />
                     <Route exact path="/favorites" element={<Favorites />} />
+                    <Route exact path="/userprofile" element={<UserProfile />} />
                     <Route
                         exact
                         path="/searchmarketplace"

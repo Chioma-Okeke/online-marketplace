@@ -5,14 +5,19 @@ import profile from "../../../assets/profile.svg";
 import PropTypes from "prop-types";
 import NavContainer from "../../navBar/NavContainer";
 import { ListingsProvider } from "../../../context/ListingsContext";
+import { motion } from "framer-motion";
 
 function PersonalPageLayout({ pageName, children }) {
     return (
         <ListingsProvider>
-            <div>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+            >
                 {/* large screen View */}
                 <div className="hidden lg:flex justify-between">
-                    <NavContainer pageName={pageName}/>
+                    <NavContainer pageName={pageName} />
                     <div className="relative lg:w-3/4 2xl:w-4/5">
                         {children}
                     </div>
@@ -23,11 +28,8 @@ function PersonalPageLayout({ pageName, children }) {
                         <header className="flex items-center justify-between py-2 px-3 border-b-2">
                             <div>
                                 <Link
-                                    // to={`${backToPage}`}
+                                    to={"/listings"}
                                     className="flex items-center gap-2 cursor-pointer"
-                                    // onClick={handlePageBack}
-                                    // onMouseEnter={() => setMouseEnter(true)}
-                                    // onMouseLeave={() => setMouseEnter(false)}
                                 >
                                     <IoMdArrowBack size={25} />
                                     <p className="text-lg">{pageName}</p>
@@ -91,7 +93,7 @@ function PersonalPageLayout({ pageName, children }) {
                     </div>
                     <div>{children}</div>
                 </div>
-            </div>
+            </motion.div>
         </ListingsProvider>
     );
 }
