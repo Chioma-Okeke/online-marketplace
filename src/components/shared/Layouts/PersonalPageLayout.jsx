@@ -24,12 +24,7 @@ function PersonalPageLayout({ pageName, children }) {
                     </motion.div>
                 </div>
                 {/* Mobile screen */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="lg:hidden"
-                >
+                <div className="lg:hidden">
                     <div>
                         <header className="flex items-center justify-between py-2 px-3 border-b-2">
                             <div>
@@ -97,8 +92,14 @@ function PersonalPageLayout({ pageName, children }) {
                             </nav>
                         </div>
                     </div>
-                    <div>{children}</div>
-                </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                    >
+                        {children}
+                    </motion.div>
+                </div>
             </div>
         </ListingsProvider>
     );
