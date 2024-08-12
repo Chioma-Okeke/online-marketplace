@@ -10,20 +10,26 @@ import { motion } from "framer-motion";
 function PersonalPageLayout({ pageName, children }) {
     return (
         <ListingsProvider>
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-            >
+            <div>
                 {/* large screen View */}
                 <div className="hidden lg:flex justify-between">
                     <NavContainer pageName={pageName} />
-                    <div className="relative lg:w-3/4 2xl:w-4/5">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="relative lg:w-3/4 2xl:w-4/5"
+                    >
                         {children}
-                    </div>
+                    </motion.div>
                 </div>
                 {/* Mobile screen */}
-                <div className="lg:hidden">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="lg:hidden"
+                >
                     <div>
                         <header className="flex items-center justify-between py-2 px-3 border-b-2">
                             <div>
@@ -92,8 +98,8 @@ function PersonalPageLayout({ pageName, children }) {
                         </div>
                     </div>
                     <div>{children}</div>
-                </div>
-            </motion.div>
+                </motion.div>
+            </div>
         </ListingsProvider>
     );
 }
