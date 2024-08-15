@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 
 import { ListingsProvider } from "../../../context/ListingsContext";
 import NavContainer from "../../navBar/NavContainer";
 import AppHeader from "../AppHeader";
-import { motion } from "framer-motion";
 
 function PageLayout({ pageName, children }) {
     console.log(pageName, "name in page layout");

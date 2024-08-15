@@ -1,11 +1,12 @@
 // import React from "react";
 import { IoMdArrowBack } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
-import profile from "../../../assets/profile.svg";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
+
+import profile from "../../../assets/profile.svg";
 import NavContainer from "../../navBar/NavContainer";
 import { ListingsProvider } from "../../../context/ListingsContext";
-import { motion } from "framer-motion";
 
 function PersonalPageLayout({ pageName, children }) {
     return (
