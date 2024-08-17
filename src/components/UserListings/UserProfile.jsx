@@ -3,7 +3,7 @@
 function UserProfile() {
     return (
         <section>
-            <p className="text-center p-3 text-xl font-semibold text-gray-400">
+            <p className="text-center p-3 text-sm md:text-xl font-semibold text-gray-400">
                 Under construction.
             </p>
         </section>

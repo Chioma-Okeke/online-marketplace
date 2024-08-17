@@ -90,6 +90,18 @@ class ListingService {
             throw error;
         }
     }
+
+    async getListingsBought() {
+        try {
+            const response = await this.httpClient.get(
+                `${this.baseUrl}/listing/my`
+            );
+            return response.json();
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
 }
 
 export default ListingService;

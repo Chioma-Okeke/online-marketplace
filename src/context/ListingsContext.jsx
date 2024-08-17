@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, createContext, useEffect, useMemo } from "react";
-// import { listings as listingsData } from "../data/listings";
+import { listings as listingsData } from "../data/listings";
 // import axios from "axios";
 import ListingService from "../services/Listing";
 import FetchClient from "../ServiceClients/FetchClient";
@@ -31,12 +31,15 @@ export const ListingsProvider = (props) => {
                     listingService.getListingsBought(),
                     listingService.getFavorites(),
                 ]);
+
                 setListings(allListings);
+                setOriginalListings(allListings);
                 setListingsSoldByUser(userListings);
                 setListingBoughtByUser(userListingsBought);
                 setUserFavoriteListings(favoriteListings);
-                setOriginalListings(allListings);
             } catch (err) {
+                setListings(listingsData);
+                setOriginalListings(listingsData);
                 console.error(err);
             }
         }
@@ -79,27 +82,27 @@ export const ListingsProvider = (props) => {
         setSearchHistory([]);
     }
 
-    const contextValues = useMemo(
-        () => ({
+    const contextValues = useMemo(() => {
+        return {
             listings,
             userFavoriteListings,
+            listingsSoldByUser,
             listingBoughtByUser,
             searchListings,
             searchHistory,
-            clearSearchHistory, 
+            clearSearchHistory,
             showCategory,
-        }),
-        [
-            listingBoughtByUser,
-            listingsSoldByUser,
-            listings,
-            searchHistory,
-            userFavoriteListings,
-        ]
-    );
+        };
+    }, [
+        listingBoughtByUser,
+        listingsSoldByUser,
+        listings,
+        searchHistory,
+        userFavoriteListings,
+    ]);
 
     return (
-        <ListingsContext.Provider value={{ contextValues }}>
+        <ListingsContext.Provider value={contextValues}>
             {props.children}
         </ListingsContext.Provider>
     );

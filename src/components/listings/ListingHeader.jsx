@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 import profile from "../../assets/profile.svg";
 import { IoMdArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
-function reducer (state, action) {
+function reducer(state, action) {
     const { type, isAuthenticated } = action;
     switch (type) {
         case "back":
@@ -15,7 +15,7 @@ function reducer (state, action) {
     }
 }
 function ListingHeader() {
-    const {isAuthenticated} = useContext(AuthContext)
+    const { isAuthenticated } = useContext(AuthContext);
     const [mouseEnter, setMouseEnter] = React.useState(false);
     const [backToPage, dispatch] = React.useReducer(
         reducer,
@@ -45,13 +45,15 @@ function ListingHeader() {
                 />
                 <p className="text-lg">Marketplace</p>
             </Link>
-            <img src={profile} alt="" />
+            <Link to={"/userprofile"}>
+                <img src={profile} alt="" />
+            </Link>
         </div>
     );
 }
 
 ListingHeader.propTypes = {
-    isLoggedIn: PropTypes.bool.isRequired
-}
+    isLoggedIn: PropTypes.bool.isRequired,
+};
 
 export default ListingHeader;

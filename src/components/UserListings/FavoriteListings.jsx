@@ -23,7 +23,7 @@ function FavoriteListings() {
                     })}
                 </div>
             ) : (
-                <p className="text-center p-3 text-xl font-semibold text-gray-400">
+                <p className="text-center p-3 text-sm md:text-xl font-semibold text-gray-400">
                     You have no favorite listings. Listings you like will appear here.
                 </p>
             )}
