@@ -38,7 +38,7 @@ function PersonalPageLayout({ pageName, children }) {
                                 </Link>
                             </div>
                             <div>
-                                <Link>
+                                <Link to={"/userprofile"}>
                                     <img
                                         src={profile}
                                         alt=""
@@ -47,7 +47,7 @@ function PersonalPageLayout({ pageName, children }) {
                                 </Link>
                             </div>
                         </header>
-                        <div>
+                        {pageName !== "User Profile" && <div>
                             <nav>
                                 <ul className="flex items-center justify-between">
                                     <NavLink
@@ -91,7 +91,7 @@ function PersonalPageLayout({ pageName, children }) {
                                     </NavLink>
                                 </ul>
                             </nav>
-                        </div>
+                        </div>}
                     </div>
                     <motion.div
                         initial={{ opacity: 0 }}

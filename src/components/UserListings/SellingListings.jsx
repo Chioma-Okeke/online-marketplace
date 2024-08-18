@@ -12,16 +12,7 @@ function SellingListings() {
     return (
         <section>
             <div className="flex items-center p-3 gap-3 w-full md:hidden">
-                <div className="w-[10%]">
-                    <Link>
-                        <img
-                            src={profile}
-                            alt=""
-                            className="cursor-pointer w-10"
-                        />
-                    </Link>
-                </div>
-                <div className="w-[90%]">
+                <div className="w-[90%] mx-auto">
                     <Link to={"/create"}>
                         <Button className="p-4 rounded-md w-full bg-[#e8d7ee] text-[#720D96] font-semibold transition ease-in-out hover:text-white hover:bg-[#720D96]">
                             + Create a New Listing

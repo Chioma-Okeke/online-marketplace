@@ -15,11 +15,13 @@ export const ListingsProvider = (props) => {
     const [listingsSoldByUser, setListingsSoldByUser] = useState([]);
     const [listingBoughtByUser, setListingBoughtByUser] = useState([]);
     const [userFavoriteListings, setUserFavoriteListings] = useState([]);
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         const listingService = new ListingService(FetchClient);
         async function getListings() {
             try {
+                setIsLoading(true)
                 const [
                     allListings,
                     userListings,
@@ -41,6 +43,8 @@ export const ListingsProvider = (props) => {
                 setListings(listingsData);
                 setOriginalListings(listingsData);
                 console.error(err);
+            } finally {
+                setIsLoading(false)
             }
         }
 
@@ -85,6 +89,7 @@ export const ListingsProvider = (props) => {
     const contextValues = useMemo(() => {
         return {
             listings,
+            isLoading,
             userFavoriteListings,
             listingsSoldByUser,
             listingBoughtByUser,

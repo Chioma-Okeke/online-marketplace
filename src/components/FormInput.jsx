@@ -29,7 +29,7 @@ const FormInput = React.forwardRef(function FormInput(
             {inputLabel && (
                 <div className="flex items-start">
                     <label
-                        className={`block text-[#101928] text-sm font-medium ${labelClasses}`}
+                        className={`block text-[#101928] font-medium ${labelClasses}`}
                         htmlFor={labelFor}
                     >
                         {inputLabel}

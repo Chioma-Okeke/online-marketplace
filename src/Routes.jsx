@@ -6,7 +6,6 @@ import {
     Navigate,
 } from "react-router-dom";
 import ProtectedRoutes from "./components/ProtectedRoutes";
-import PropTypes from "prop-types";
 import UserProfile from "./pages/UserProfile";
 const SignUp = lazy(() => import("./pages/authPages/SignUp"));
 const SignIn = lazy(() => import("./pages/authPages/SignIn"));
@@ -126,8 +125,3 @@ export function PageRoutes() {
         </Router>
     );
 }
-
-PageRoutes.propTypes = {
-    isLoggedIn: PropTypes.bool,
-    userType: PropTypes.string,
-};
