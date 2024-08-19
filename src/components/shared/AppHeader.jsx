@@ -1,18 +1,20 @@
 import React, { useContext } from "react";
 import profile from "../../assets/profile.svg";
 import { MdLocationPin } from "react-icons/md";
-import { IoNotifications } from "react-icons/io5";
 import ChangeLocationModal from "../modals/ChangeLocationModal";
 import SearchInput from "../SearchInput";
 import Button from "../reusable/Button";
 import { Link } from "react-router-dom";
 import UserIconOptions from "../UserIconOptions";
 import { AuthContext } from "../../context/AuthContext";
+import AppIcon from "../../assets/app-icon.png";
+import { ModalContext } from "../../context/ModalContext";
 
 function AppHeader() {
     const [showLocationModal, setShowLocationModal] = React.useState(false);
     const [showUserOptions, setShowUserOptions] = React.useState(false);
-    const {isAuthenticated} = useContext(AuthContext)
+    const { isAuthenticated } = useContext(AuthContext);
+    const {handleLocationToggle} = useContext(ModalContext)
 
     function handleLocationToogle() {
         if (!showLocationModal) {
@@ -36,18 +38,23 @@ function AppHeader() {
         <div>
             <div
                 onScroll={toggleFixed}
+                onClick={() => setShowUserOptions(false)}
                 className="app-header fixed top-0 left-0 flex items-center justify-between py-3 px-3 md:px-5 border-b shadow-md w-full"
             >
-                <div>
-                    <h1 className="text-lg md:text-3xl font-bold text-[#720D96]">
-                        Marketplace
-                    </h1>
-                    <p className="md:text-2xl font-semibold">Platform</p>
-                </div>
+                <Link to={`${isAuthenticated ? "/listings" : "/"}`}>
+                    <div className="flex items-center gap-3">
+                        <img src={AppIcon} alt="" className="w-10" />
+                        <div>
+                            <h1 className="text-lg md:text-3xl font-bold text-[#720D96]">
+                                Marketplace
+                            </h1>
+                        </div>
+                    </div>
+                </Link>
                 <SearchInput />
                 <div
                     className="hidden lg:flex items-center gap-1 cursor-pointer"
-                    onClick={handleLocationToogle}
+                    onClick={handleLocationToggle}
                 >
                     <MdLocationPin size={20} />
                     <span className="hover:underline text-[#720D96]">
@@ -60,7 +67,12 @@ function AppHeader() {
                             <img
                                 src={profile}
                                 alt=""
-                                onClick={() => setShowUserOptions(prevState => !prevState)}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setShowUserOptions(
+                                        (prevState) => !prevState
+                                    );
+                                }}
                                 className="cursor-pointer"
                             />
                         ) : (
@@ -75,9 +87,7 @@ function AppHeader() {
             </div>
 
             {showUserOptions && <UserIconOptions />}
-            {showLocationModal && (
-                <ChangeLocationModal onClose={handleLocationToogle}/>
-            )}
+            
         </div>
     );
 }

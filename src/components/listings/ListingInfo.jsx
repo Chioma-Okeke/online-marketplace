@@ -8,48 +8,16 @@ import { TiMessages } from "react-icons/ti";
 import MessageModal from "../modals/MessageModal";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { ModalContext } from "../../context/ModalContext";
 
 function ListingInfo() {
-    const [showSellerModal, setShowSellerModal] = React.useState(false);
-    const [showMessageModal, setShowMessageModal] = React.useState(false);
     const [showFullDescription, setShowFullDescription] = React.useState(false);
     const { isAuthenticated } = useContext(AuthContext);
-    const navigate = useNavigate()
-
-    function handleMessageToogle() {
-        if (!showMessageModal) {
-            if (isAuthenticated) {
-                document
-                    .getElementsByTagName("html")[0]
-                    .classList.add("overflow-y-hidden");
-                setShowMessageModal(true);
-            } else {
-                navigate("/signin")
-            }
-        } else {
-            document
-                .getElementsByTagName("html")[0]
-                .classList.remove("overflow-y-hidden");
-            setShowMessageModal(false);
-        }
-    }
-
-    function handleToggle() {
-        if (!showSellerModal) {
-            document
-                .getElementsByTagName("html")[0]
-                .classList.add("overflow-y-hidden");
-            setShowSellerModal(true);
-        } else {
-            document
-                .getElementsByTagName("html")[0]
-                .classList.remove("overflow-y-hidden");
-            setShowSellerModal(false);
-        }
-    }
+    const { handleMessageToggle, handleSellerToggle } =
+        useContext(ModalContext);
 
     return (
-        <div className="md:flex-1 px-2">
+        <div className="md:flex-1 px-2 pb-10 md:pb-0">
             <div className="md:pl-10 lg:pl-0 2xl:pl-10">
                 <h1 className="font-semibold text-2xl xl:text-3xl mb-2">
                     Plain Sleeve Kangaroo Pocket Drawstring Hoodie
@@ -61,21 +29,27 @@ function ListingInfo() {
                     Listed 2 weeks ago in Lagos
                 </p>
                 <div className="flex items-center gap-5 mb-5">
-                    <Button
-                        className="hidden md:block text-black text-base lg:text-lg font-bold py-1.5 px-6 border bg-white border-[#720D96] rounded-md hover:bg-[#720D96] hover:text-white"
-                        onClick={handleMessageToogle}
-                    >
-                        Message
-                    </Button>
-                    <Button
-                        onClick={handleMessageToogle}
-                        className="md:hidden border border-[#720D96] p-4 rounded-full bg-white hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white"
-                    >
-                        <TiMessages size={25} />
-                    </Button>
-                    {isAuthenticated && <Button className="bg-white border border-[#720D96] p-4 rounded-full md:rounded-md hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
-                        <FaHeart size={25} />
-                    </Button>}
+                    {isAuthenticated && (
+                        <div>
+                            <Button
+                                className="hidden md:block text-black text-base lg:text-lg font-bold p-4 border bg-white border-[#720D96] rounded-md hover:bg-[#720D96] hover:text-white"
+                                onClick={handleMessageToggle}
+                            >
+                                Message
+                            </Button>
+                            <Button
+                                onClick={handleMessageToggle}
+                                className="md:hidden border border-[#720D96] p-4 rounded-full bg-white hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white"
+                            >
+                                <TiMessages size={25} />
+                            </Button>
+                        </div>
+                    )}
+                    {isAuthenticated && (
+                        <Button className="bg-white border border-[#720D96] p-4 rounded-full md:rounded-md hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
+                            <FaHeart size={25} />
+                        </Button>
+                    )}
                     <Button className="bg-white border border-[#720D96] p-4 rounded-full md:rounded-md hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
                         <IoIosShareAlt size={25} />
                     </Button>
@@ -118,7 +92,7 @@ function ListingInfo() {
                             Seller information
                         </span>
                         <span
-                            onClick={handleToggle}
+                            onClick={handleSellerToggle}
                             className="text-[#720D96] lg:text-lg cursor-pointer transition ease-in-out hover:underline duration-500"
                         >
                             Seller details
@@ -129,19 +103,17 @@ function ListingInfo() {
                             src={image}
                             alt=""
                             className="rounded-full w-20 hover:opacity-90 cursor-pointer"
-                            onClick={handleToggle}
+                            onClick={handleSellerToggle}
                         />
                         <p
                             className="lg:text-lg font-medium hover:underline cursor-pointer"
-                            onClick={handleToggle}
+                            onClick={handleSellerToggle}
                         >
                             Sophia Princess
                         </p>
                     </div>
                 </div>
             </div>
-            {showSellerModal && <SellerModal onClose={handleToggle} />}
-            {showMessageModal && <MessageModal onClose={handleMessageToogle} />}
         </div>
     );
 }

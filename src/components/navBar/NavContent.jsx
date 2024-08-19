@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useContext } from "react";
 import Button from "../reusable/Button";
 import { listingCategories } from "../../data/listings";
 import profile from "../../assets/profile.svg";
@@ -12,28 +12,15 @@ import { FaShop } from "react-icons/fa6";
 import { IoNotifications } from "react-icons/io5";
 import { AuthContext } from "../../context/AuthContext";
 import { IoMdClose } from "react-icons/io";
+import NotificationModal from "../modals/NotificationModal";
+import { ModalContext } from "../../context/ModalContext";
 
 function NavContent() {
-    const [showLocationModal, setShowLocationModal] = React.useState(false);
     const [showCategories, setShowCategories] = React.useState(false);
-    const [showNotifications, setShowNotifications] = React.useState(false);
     const [currentCategory, setCurrentCategory] = React.useState("Browse All");
     const { showCategory } = React.useContext(ListingsContext);
     const { isAuthenticated } = React.useContext(AuthContext);
-
-    function handleLocationToogle() {
-        if (!showLocationModal) {
-            document
-                .getElementsByTagName("html")[0]
-                .classList.add("overflow-y-hidden");
-            setShowLocationModal(true);
-        } else {
-            document
-                .getElementsByTagName("html")[0]
-                .classList.remove("overflow-y-hidden");
-            setShowLocationModal(false);
-        }
-    }
+    const {handleNotificationToggle, handleLocationToggle} = useContext(ModalContext)
 
     function handleCategories() {
         if (!showCategories) {
@@ -84,15 +71,15 @@ function NavContent() {
                         <span>Browse All</span>
                     </div>
                     {isAuthenticated && (
-                        <Link
-                            to={"/notifications"}
+                        <div
+                            onClick={handleNotificationToggle}
                             className={`flex items-center gap-2 mb-2 p-1 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md`}
                         >
                             <div className="bg-[#e4e6eb] rounded-full p-2 w-fit">
                                 <IoNotifications size={20} />
                             </div>
                             <span>Notifications</span>
-                        </Link>
+                        </div>
                     )}
                     <hr className="my-3" />
                     <h1 className="font-semibold text-lg">Categories</h1>
@@ -146,7 +133,10 @@ function NavContent() {
                             Categories
                         </p>
                         {isAuthenticated && (
-                            <p className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
+                            <p
+                                onClick={handleNotificationToggle}
+                                className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
+                            >
                                 Notifications
                             </p>
                         )}
@@ -163,13 +153,13 @@ function NavContent() {
                                     setCurrentCategory("Browse All");
                                 }}
                             >
-                                <IoMdClose size={20}/>
+                                <IoMdClose size={20} />
                             </div>
                         </div>
                     )}
                     <div
                         className="flex items-center gap-1 cursor-pointer float-right"
-                        onClick={handleLocationToogle}
+                        onClick={handleLocationToggle}
                     >
                         <MdLocationPin size={20} />
                         <span className="hover:underline text-[#720D96]">
@@ -178,9 +168,6 @@ function NavContent() {
                     </div>
                 </div>
             </div>
-            {showLocationModal && (
-                <ChangeLocationModal onClose={handleLocationToogle} />
-            )}
             {showCategories && (
                 <MobileCategories
                     currentCategory={currentCategory}

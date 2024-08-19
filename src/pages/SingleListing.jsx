@@ -11,7 +11,7 @@ function SingleListing() {
         <Container className="">
             <SingleListingProvider>
                 <ListingHeader />
-                <div className="flex w-full min-h-[100vh] flex-col md:flex-row md:py-8">
+                <div className="flex w-full flex-col md:flex-row md:py-8">
                     <ListingGallery />
                     <ListingInfo />
                 </div>
