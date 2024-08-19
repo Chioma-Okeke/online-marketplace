@@ -11,13 +11,13 @@ function ChangeLocationModal({ onClose }) {
     const [mouseEnter, setMouseEnter] = React.useState(false);
 
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1}}
-            exit={{ opacity: 0  }}
-            className=""
-        >
-            <div className="hidden md:block fixed inset-0 z-50 transition-all duration-500">
+        <div className="">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="hidden md:block fixed inset-0 z-50 transition-all duration-500"
+            >
                 {/* Modal Backdrop */}
                 <div
                     className="bg-filter bg-black bg-opacity-50 fixed inset-0 w-full h-full z-30"
@@ -100,9 +100,9 @@ function ChangeLocationModal({ onClose }) {
                         </div>
                     </div>
                 </main>
-            </div>
+            </motion.div>
             {/* {mobile view} */}
-            <div className="md:hidden bg-white overflow-y-scroll fixed inset-0 z-30 transition-all duration-500 ">
+            <div className="lg:hidden bg-white overflow-y-scroll fixed inset-0 z-30 transition-all duration-500 ">
                 <div className="flex items-center justify-between p-3 border-b">
                     <div
                         onClick={onClose}
@@ -179,7 +179,7 @@ function ChangeLocationModal({ onClose }) {
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 }
 

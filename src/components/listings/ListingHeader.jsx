@@ -45,9 +45,11 @@ function ListingHeader() {
                 />
                 <p className="text-lg">Marketplace</p>
             </Link>
-            <Link to={"/userprofile"}>
-                <img src={profile} alt="" />
-            </Link>
+            {isAuthenticated && (
+                <Link to={"/userprofile"}>
+                    <img src={profile} alt="" />
+                </Link>
+            )}
         </div>
     );
 }

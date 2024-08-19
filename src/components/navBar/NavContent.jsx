@@ -11,10 +11,12 @@ import { ListingsContext } from "../../context/ListingsContext";
 import { FaShop } from "react-icons/fa6";
 import { IoNotifications } from "react-icons/io5";
 import { AuthContext } from "../../context/AuthContext";
+import { IoMdClose } from "react-icons/io";
 
 function NavContent() {
     const [showLocationModal, setShowLocationModal] = React.useState(false);
     const [showCategories, setShowCategories] = React.useState(false);
+    const [showNotifications, setShowNotifications] = React.useState(false);
     const [currentCategory, setCurrentCategory] = React.useState("Browse All");
     const { showCategory } = React.useContext(ListingsContext);
     const { isAuthenticated } = React.useContext(AuthContext);
@@ -119,13 +121,13 @@ function NavContent() {
             </div>
             {/* {mobile screen} */}
             <div className="lg:hidden">
-                <div className="flex items-center justify-between text-xs sm:text-sm my-2">
+                <div className="flex items-center justify-between text-sm sm:text-sm my-2">
                     <div className="flex items-center gap-2 font-medium">
                         <Link to={"/selling"}>
                             <img
                                 src={profile}
                                 alt=""
-                                className="cursor-pointer w-6 sm:w-10"
+                                className="cursor-pointer w-10 sm:w-10"
                             />
                         </Link>
                         <p className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
@@ -151,20 +153,41 @@ function NavContent() {
                     </div>
                 </div>
                 <hr />
-                <div
-                    className="flex items-center gap-1 cursor-pointer text-sm float-right mt-2"
-                    onClick={handleLocationToogle}
-                >
-                    <MdLocationPin size={20} />
-                    <span className="hover:underline text-[#720D96]">
-                        Lagos, Nigeria
-                    </span>
+                <div className="mt-2 flex items-center justify-between">
+                    {currentCategory !== "Browse All" && (
+                        <div className="flex items-center gap-2 py-2 px-3 w-fit border border-[#720D96] rounded-2xl">
+                            <p>{currentCategory}</p>
+                            <div
+                                onClick={() => {
+                                    showCategory("Browse All");
+                                    setCurrentCategory("Browse All");
+                                }}
+                            >
+                                <IoMdClose size={20}/>
+                            </div>
+                        </div>
+                    )}
+                    <div
+                        className="flex items-center gap-1 cursor-pointer float-right"
+                        onClick={handleLocationToogle}
+                    >
+                        <MdLocationPin size={20} />
+                        <span className="hover:underline text-[#720D96]">
+                            Lagos, Nigeria
+                        </span>
+                    </div>
                 </div>
             </div>
             {showLocationModal && (
                 <ChangeLocationModal onClose={handleLocationToogle} />
             )}
-            {showCategories && <MobileCategories onClose={handleCategories} />}
+            {showCategories && (
+                <MobileCategories
+                    currentCategory={currentCategory}
+                    onClose={handleCategories}
+                    setCurrentCategory={setCurrentCategory}
+                />
+            )}
         </div>
     );
 }

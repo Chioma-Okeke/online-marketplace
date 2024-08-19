@@ -6,6 +6,7 @@ import SignupForm from "../../components/auth/SignupForm";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { motion } from "framer-motion";
 import Container from "../../components/container/Container";
+import { IoMdCloseCircle } from "react-icons/io";
 
 function SignUp() {
     return (
@@ -35,8 +36,9 @@ function SignUp() {
                     </h2>
                     <p className="font-light text-md w-[90%] lg:w-[70%] mx-auto">
                         Whether you&apos;re hunting for the perfect gift or
-                        treating yourself to something special, this space is your go-to destination for local finds. Join
-                        our community of savvy shoppers and start exploring
+                        treating yourself to something special, this space is
+                        your go-to destination for local finds. Join our
+                        community of savvy shoppers and start exploring
                         today—your next great find is just around the corner!
                     </p>
                 </div>
@@ -59,6 +61,13 @@ function SignUp() {
                         </div>
                     </div>
                 </div>
+                <Link to={"/"} className="flex justify-end">
+                    <IoMdCloseCircle
+                        size={40}
+                        cursor={"pointer"}
+                        className="bg-white rounded-full transition ease-in-out hover:scale-110 duration-300"
+                    />
+                </Link>
             </motion.div>
         </Container>
     );

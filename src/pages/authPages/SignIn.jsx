@@ -6,6 +6,7 @@ import SigninForm from "../../components/auth/SigninForm";
 import { motion } from "framer-motion";
 import { Player } from "@lottiefiles/react-lottie-player";
 import Container from "../../components/container/Container";
+import { IoMdCloseCircle } from "react-icons/io";
 
 function SignIn() {
     return (
@@ -56,6 +57,13 @@ function SignIn() {
                         </div>
                     </div>
                 </div>
+                <Link to={"/"} className="flex justify-end">
+                    <IoMdCloseCircle
+                        size={40}
+                        cursor={"pointer"}
+                        className="bg-white rounded-full transition ease-in-out hover:scale-110 duration-300"
+                    />
+                </Link>
             </motion.div>
         </Container>
     );

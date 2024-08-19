@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
+import { FaCamera } from "react-icons/fa";
 
 import FormInput from "../FormInput";
 import image from "../../assets/image1.png";
 
 function UserForm({ formData, handleChange }) {
-
     return (
         <div className="border shadow">
             <form>
@@ -20,6 +20,9 @@ function UserForm({ formData, handleChange }) {
                                 alt=""
                                 className="absolute bottom-0 left-3 w-40 border-4 border-white rounded-full"
                             />
+                            <div className="absolute bottom-3 right-3 bg-white rounded-full p-2 hover:scale-105 cursor-pointer">
+                                <FaCamera size={25}/>
+                            </div>
                         </div>
                     </div>
                     <div className="px-5 py-5">
@@ -38,9 +41,7 @@ function UserForm({ formData, handleChange }) {
                                 labelClasses="text-base"
                                 className="sm:w-[40%] p-4 border border-[#D0D5DD] bg-white rounded-md shadow-sm text-sm focus:outline-[#720D96] hover:border-[#720D96] mt-2 mb-5"
                             />
-                            <p className="text-[#77797c]">
-                                Joined in 2012
-                            </p>
+                            <p className="text-[#77797c]">Joined in 2012</p>
                             <p className="text-[#77797c] mb-5">
                                 <span className="text-[#141414] font-semibold">
                                     20+
@@ -87,7 +88,7 @@ function UserForm({ formData, handleChange }) {
 
 UserForm.propTypes = {
     formData: PropTypes.object,
-    handleChange: PropTypes.func
-}
+    handleChange: PropTypes.func,
+};
 
 export default UserForm;

@@ -37,7 +37,7 @@ function ListingsGrid() {
                     })}
                 </div>
             ) : (
-                <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-semibold text-gray-400">
+                <p className="w-full text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg md:text-2xl font-semibold text-gray-400">
                     No items available for Now
                 </p>
             ))}

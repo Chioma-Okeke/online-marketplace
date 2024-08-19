@@ -1,14 +1,24 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useContext } from "react";
 import { IoMdArrowBack, IoMdSearch } from "react-icons/io";
 // import Button from "../reusable/Button";
 // import { MdArrowDropDown, MdLocationPin } from "react-icons/md";
 // import FormInput from "../FormInput";
 // import map from "../../assets/model-map.png";
 import { listingCategories } from "../../data/listings";
+import { ListingsContext } from "../../context/ListingsContext";
+import { FaShop } from "react-icons/fa6";
 
-function MobileCategories({ onClose }) {
+function MobileCategories({ onClose, setCurrentCategory, currentCategory }) {
     const [mouseEnter, setMouseEnter] = React.useState(false);
+    const { showCategory } = useContext(ListingsContext);
+
+    function displayCategory(e) {
+        console.log(e.target.id);
+        showCategory(e.target.id);
+        setCurrentCategory(e.target.id);
+        onClose();
+    }
 
     return (
         <div className="">
@@ -37,17 +47,40 @@ function MobileCategories({ onClose }) {
                     />
                 </div>
                 <hr className="border-b-2" />
+                <div
+                    onClick={(e) => displayCategory(e)}
+                    id="Browse All"
+                    className={`flex items-center gap-2 mb-2 p-1 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md ${
+                        currentCategory === "Browse All"
+                            ? "bg-[#e8d7ee] text-[#720d96]"
+                            : ""
+                    }`}
+                >
+                    <div className="bg-[#e4e6eb] rounded-full p-2">
+                        <FaShop size={20} />
+                    </div>
+                    <span>Browse All</span>
+                </div>
                 <div className="py-3">
                     {listingCategories.map(({ id, Icon, category }) => {
                         return (
                             <div
                                 key={id}
-                                className="border-b-2 flex items-center gap-2 mb-2 py-2 pl-3 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md"
+                                id={category}
+                                onClick={(e) => displayCategory(e)}
+                                className={`flex items-center gap-2 mb-2 p-1 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md ${
+                                    currentCategory === category
+                                        ? "bg-[#e8d7ee] text-[#720d96]"
+                                        : ""
+                                }`}
                             >
-                                <div className="bg-[#e4e6eb] rounded-full p-2">
-                                    <Icon size={20} />
+                                <div
+                                    className="bg-[#e4e6eb] rounded-full p-2"
+                                    id={category}
+                                >
+                                    <Icon size={20} id={category} />
                                 </div>
-                                <span>{category}</span>
+                                <span id={category}>{category}</span>
                             </div>
                         );
                     })}

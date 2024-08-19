@@ -19,11 +19,14 @@ class UserAuthentication {
 
     async authenticateUser(userDetail) {
         try {
-            const response = await this.httpClient.post(`${this.baseUrl}/authenticate`, userDetail)
-            return response.json()
+            const response = await this.httpClient.post(
+                `${this.baseUrl}/authenticate`,
+                userDetail
+            );
+            return response.json();
         } catch (error) {
-            console.error(error)
-            throw error
+            console.error(error);
+            throw error;
         }
     }
 
@@ -58,6 +61,18 @@ class UserAuthentication {
             const response = await this.httpClient.post(
                 `${this.baseUrl}/changepassword`,
                 newAuthDetails
+            );
+            return response.json();
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
+
+    async getCurrentUserName() {
+        try {
+            const response = await this.httpClient.get(
+                `${this.baseUrl}/currentusername`
             );
             return response.json();
         } catch (error) {

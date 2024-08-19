@@ -19,7 +19,7 @@ const Notifications = lazy(() => import("./pages/Notifications"));
 const UserListings = lazy(() => import("./pages/UserListings"));
 const ListingsBought = lazy(() => import("./pages/ListingsBought"));
 const Favorites = lazy(() => import("./pages/Favorites"));
-const ChangePassword = lazy(() => import("./pages/authPages/ChangePassword"))
+const ChangePassword = lazy(() => import("./pages/authPages/ChangePassword"));
 
 export function PageRoutes() {
     return (
@@ -35,7 +35,11 @@ export function PageRoutes() {
                     <Route exact path="/selling" element={<UserListings />} />
                     <Route exact path="/buying" element={<ListingsBought />} />
                     <Route exact path="/favorites" element={<Favorites />} />
-                    <Route exact path="/userprofile" element={<UserProfile />} />
+                    <Route
+                        exact
+                        path="/userprofile"
+                        element={<UserProfile />}
+                    />
                     <Route
                         exact
                         path="/searchmarketplace"
@@ -46,6 +50,7 @@ export function PageRoutes() {
                         path="/forgotpassword"
                         element={<ForgotPassword />}
                     />
+                    <Route exact path="/listings" element={<Listings />} />
                     <Route
                         exact
                         path="/changepassword"
@@ -54,7 +59,6 @@ export function PageRoutes() {
 
                     {/* Protected Routes */}
                     <Route element={<ProtectedRoutes />}>
-                        <Route exact path="/listings" element={<Listings />} />
                         <Route
                             exact
                             path="/create"

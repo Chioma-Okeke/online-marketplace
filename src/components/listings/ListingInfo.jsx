@@ -73,10 +73,10 @@ function ListingInfo() {
                     >
                         <TiMessages size={25} />
                     </Button>
-                    {isAuthenticated && <Button className="bg-white border border-[#720D96] py-2 px-3 rounded-full md:rounded-md hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
+                    {isAuthenticated && <Button className="bg-white border border-[#720D96] p-4 rounded-full md:rounded-md hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
                         <FaHeart size={25} />
                     </Button>}
-                    <Button className="bg-white border border-[#720D96] py-2 px-3 rounded-full md:rounded-md hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
+                    <Button className="bg-white border border-[#720D96] p-4 rounded-full md:rounded-md hover:bg-[#720D96] hover:text-white active:bg-[#720D96] active:text-white">
                         <IoIosShareAlt size={25} />
                     </Button>
                 </div>
