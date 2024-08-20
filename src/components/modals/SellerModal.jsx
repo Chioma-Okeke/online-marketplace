@@ -25,14 +25,12 @@ function SellerModal({ onClose }) {
                 <main className="flex flex-col items-center justify-center h-full w-full relative">
                     <div className="modal-wrapper flex items-center z-30 relative">
                         <div className="relative overflow-y-scroll max-w-md mx-5 xl:max-w-3xl lg:max-w-xl md:max-w-xl bg-white max-h-[80vh] shadow-lg rounded-lg scroll-smooth">
-                            {/* <div className="sticky top-0 w-full flex items-center justify-end z-50"> */}
                             <IoMdCloseCircle
                                 size={40}
                                 onClick={onClose}
                                 cursor={"pointer"}
-                                className="sticky bg-white rounded-full hover:scale-90"
+                                className="absolute z-20 rounded-full right-2 top-2 bg-white hover:scale-110"
                             />
-                            {/* </div> */}
                             <div className="relative">
                                 <div
                                     className="relative h-64 w-full bg-top bg-cover bg-no-repeat"

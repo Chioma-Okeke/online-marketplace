@@ -5,6 +5,7 @@ import "react-medium-image-zoom/dist/styles.css";
 import image1 from "../../assets/image1.png";
 import image2 from "../../assets/image6.png";
 import image4 from "../../assets/image5.png";
+import ImageLoader from "../reusable/ImageLoader";
 
 function ListingGallery() {
     const [currentPicture, setCurrentPicture] = React.useState(image4);
@@ -45,16 +46,20 @@ function ListingGallery() {
                     onClick={(e) => handleImageClick(e)}
                     id="main-image"
                 >
-                    <img
+                    <ImageLoader
                         src={currentPicture}
                         alt=""
-                        className="rounded-3xl w-full"
+                        loading="lazy"
+                        width="100%"
+                        height="700px"
+                        className="rounded-3xl w-full max-h-[700px]"
                     />
                 </div>
                 <div className="grid grid-cols-3 gap-4 md:gap-8 w-full 2xl:flex flex-col 2xl:max-h-56 2xl:w-1/4 ">
                     <img
                         src={image2}
                         alt=""
+                        loading="lazy"
                         className="rounded-3xl w-full h-full cursor-pointer transition ease-in-out hover:opacity-90 duration-500 2xl:w-3/4 mx-auto"
                         onClick={(e) => handleSelection(e)}
                         onMouseEnter={(e) => handleSelection(e)}
@@ -62,6 +67,7 @@ function ListingGallery() {
                     <img
                         src={image4}
                         alt=""
+                        loading="lazy"
                         className="rounded-3xl w-full h-full cursor-pointer transition ease-in-out hover:opacity-90 duration-500 2xl:w-3/4 mx-auto"
                         onClick={(e) => handleSelection(e)}
                         onMouseEnter={(e) => handleSelection(e)}
@@ -69,6 +75,7 @@ function ListingGallery() {
                     <img
                         src={image1}
                         alt=""
+                        loading="lazy"
                         className="rounded-3xl w-full h-full cursor-pointer transition ease-in-out hover:opacity-90 duration-500 2xl:w-3/4 mx-auto"
                         onClick={(e) => handleSelection(e)}
                         onMouseEnter={(e) => handleSelection(e)}
@@ -84,6 +91,7 @@ function ListingGallery() {
                         <img
                             src={expandedImage}
                             alt="Selected"
+                            loading="lazy"
                             className="full-screen-image"
                             style={{ transform: `scale(${zoom})` }}
                         />

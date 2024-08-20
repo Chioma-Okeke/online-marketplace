@@ -51,7 +51,7 @@ function CreateListing() {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const listingService = new ListingService(FetchClient)
+        const listingService = new ListingService(FetchClient);
         try {
             // Converting files to Base64
             const filesBase64Promises = images.map((fileData) =>
@@ -72,9 +72,9 @@ function CreateListing() {
                 file: filesBase64[0],
                 listingData: JSON.stringify(formData),
             };
-            const response = listingService.createListing(listingInfo)
+            const response = listingService.createListing(listingInfo);
             alert("Successful");
-            console.log(response.data)
+            console.log(response.data);
         } catch (err) {
             console.error(err);
             alert("unsuccessful");
@@ -107,7 +107,9 @@ function CreateListing() {
                         />
                         <p className="text-lg">Marketplace</p>
                     </Link>
-                    <img src={profile} alt="" />
+                    <Link to={"/userprofile"}>
+                        <img src={profile} alt="" className="hover:scale-110"/>
+                    </Link>
                 </div>
                 <hr />
                 <div className="p-4">

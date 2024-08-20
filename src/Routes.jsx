@@ -15,7 +15,6 @@ const Listings = lazy(() => import("./pages/Listings"));
 const CreateListing = lazy(() => import("./pages/CreateListing"));
 const SearchPage = lazy(() => import("./pages/SearchPage"));
 const Home = lazy(() => import("./pages/Home"));
-const Notifications = lazy(() => import("./pages/Notifications"));
 const UserListings = lazy(() => import("./pages/UserListings"));
 const ListingsBought = lazy(() => import("./pages/ListingsBought"));
 const Favorites = lazy(() => import("./pages/Favorites"));
@@ -63,11 +62,6 @@ export function PageRoutes() {
                             exact
                             path="/create"
                             element={<CreateListing />}
-                        />
-                        <Route
-                            exact
-                            path="/notifications"
-                            element={<Notifications />}
                         />
                     </Route>
                     {/* <Route element={<ProtectedRoutes />}>

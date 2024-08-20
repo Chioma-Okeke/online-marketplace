@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import Button from "../reusable/Button";
-import profile from "../../assets/profile.svg";
 import { ListingsContext } from "../../context/ListingsContext";
 import ListingSingle from "../listings/ListingSingle";
 
@@ -31,6 +30,7 @@ function SellingListings() {
                                 key={listing.id}
                                 id={listing.id}
                                 img={listing.image}
+                                isSeller
                             />
                         );
                     })}

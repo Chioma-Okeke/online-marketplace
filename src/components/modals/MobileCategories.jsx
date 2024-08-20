@@ -1,20 +1,16 @@
-/* eslint-disable react/prop-types */
 import React, { useContext } from "react";
 import { IoMdArrowBack, IoMdSearch } from "react-icons/io";
-// import Button from "../reusable/Button";
-// import { MdArrowDropDown, MdLocationPin } from "react-icons/md";
-// import FormInput from "../FormInput";
-// import map from "../../assets/model-map.png";
+import { FaShop } from "react-icons/fa6";
+import PropTypes from "prop-types"
+
 import { listingCategories } from "../../data/listings";
 import { ListingsContext } from "../../context/ListingsContext";
-import { FaShop } from "react-icons/fa6";
 
 function MobileCategories({ onClose, setCurrentCategory, currentCategory }) {
     const [mouseEnter, setMouseEnter] = React.useState(false);
     const { showCategory } = useContext(ListingsContext);
 
     function displayCategory(e) {
-        console.log(e.target.id);
         showCategory(e.target.id);
         setCurrentCategory(e.target.id);
         onClose();
@@ -88,6 +84,12 @@ function MobileCategories({ onClose, setCurrentCategory, currentCategory }) {
             </div>
         </div>
     );
+}
+
+MobileCategories.propTypes = {
+    onClose: PropTypes.func,
+    setCurrentCategory: PropTypes.func,
+    currentCategory: PropTypes.string
 }
 
 export default MobileCategories;

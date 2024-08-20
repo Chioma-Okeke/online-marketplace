@@ -1,4 +1,3 @@
-import React from "react";
 import PageLayout from "../components/shared/Layouts/PageLayout";
 
 function Notifications() {

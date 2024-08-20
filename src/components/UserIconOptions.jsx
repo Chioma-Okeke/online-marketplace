@@ -21,16 +21,25 @@ function UserIconOptions() {
     return (
         <div className="absolute top-3/4 right-5 w-52 border p-3 bg-white rounded-lg shadow">
             <div>
-                <ul>
-                    <li className="p-1 hover:bg-gray-100 cursor-pointer">
-                        <Link to={"/userprofile"}>My Profile</Link>
-                    </li>
-                    <li className="p-1 hover:bg-gray-100 cursor-pointer">
-                        <Link to={"/favorites"}>Favorites</Link>
-                    </li>
+                <ul className="flex flex-col">
+                    <Link
+                        to={"/userprofile"}
+                        className="p-1 hover:bg-gray-100 cursor-pointer"
+                    >
+                        My Profile
+                    </Link>
+                    <Link
+                        to={"/favorites"}
+                        className="p-1 hover:bg-gray-100 cursor-pointer"
+                    >
+                        Favorites
+                    </Link>
                     <hr className="border-2 my-1" />
-                    <li className="p-1 hover:bg-gray-100 cursor-pointer">
-                        <div onClick={logOutUser}>
+                    <li
+                        className="p-1 hover:bg-gray-100 cursor-pointer"
+                        onClick={logOutUser}
+                    >
+                        <div>
                             <div className="flex items-center gap-3">
                                 <span>Log out</span>
                                 <IoLogOutOutline size={20} />

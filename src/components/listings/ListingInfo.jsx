@@ -3,18 +3,16 @@ import Button from "../reusable/Button";
 import { FaHeart } from "react-icons/fa";
 import { IoIosShareAlt } from "react-icons/io";
 import image from "../../assets/image1.png";
-import SellerModal from "../modals/SellerModal";
 import { TiMessages } from "react-icons/ti";
-import MessageModal from "../modals/MessageModal";
 import { AuthContext } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
 import { ModalContext } from "../../context/ModalContext";
 
 function ListingInfo() {
     const [showFullDescription, setShowFullDescription] = React.useState(false);
     const { isAuthenticated } = useContext(AuthContext);
-    const { handleMessageToggle, handleSellerToggle } =
-        useContext(ModalContext);
+    const { handleMessageToggle, handleSellerToggle } = useContext(ModalContext);
+
+    console.log(isAuthenticated, "listinginfo auth status")
 
     return (
         <div className="md:flex-1 px-2 pb-10 md:pb-0">

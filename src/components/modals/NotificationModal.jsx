@@ -1,10 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import { IoMdArrowBack, IoMdCloseCircle, IoMdSearch } from "react-icons/io";
-import Button from "../reusable/Button";
-import { MdArrowDropDown, MdLocationPin } from "react-icons/md";
-import FormInput from "../FormInput";
-import map from "../../assets/model-map.png";
 import { motion } from "framer-motion";
 
 function NotificationModal({ onClose }) {
@@ -40,7 +36,7 @@ function NotificationModal({ onClose }) {
                                 />
                             </div>
                             <hr />
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+                            <div className="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
                                 <p className="text-center p-3 text-2xl font-semibold text-gray-400">
                                     You have no notifications.
                                 </p>

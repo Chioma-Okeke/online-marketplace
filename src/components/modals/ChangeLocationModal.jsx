@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+
 import { IoMdArrowBack, IoMdCloseCircle, IoMdSearch } from "react-icons/io";
 import Button from "../reusable/Button";
 import { MdArrowDropDown, MdLocationPin } from "react-icons/md";
@@ -9,9 +11,16 @@ import { motion } from "framer-motion";
 
 function ChangeLocationModal({ onClose }) {
     const [mouseEnter, setMouseEnter] = React.useState(false);
+    const [showLocationOptions, setShowLocationOptions] = useState(false);
+    const [chosenLocation, setChosenLocation] = useState("65 Kilometer");
+
+    function handleSelection(e) {
+        setChosenLocation(e.target.innerText);
+        setShowLocationOptions(false);
+    }
 
     return (
-        <div className="">
+        <div>
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -43,7 +52,7 @@ function ChangeLocationModal({ onClose }) {
                             <div className="px-4 pb-3">
                                 <div className="text-xs text-[#65676B]">
                                     <p className="my-2">
-                                        Search by town, city, neighbourhood or
+                                        Search by town, city, neighborhood or
                                         postal code
                                     </p>
                                     <div className="border-2 rounded-md mb-2">
@@ -63,27 +72,135 @@ function ChangeLocationModal({ onClose }) {
                                             />
                                         </div>
                                     </div>
-                                    <div className="flex items-center justify-between border-2 rounded-md relative text-[#141414]">
-                                        <div className="flex-1">
-                                            <span className="inline-block absolute left-4 top-2 text-xs text-[rgba(20,20,20, .8)]">
-                                                Radius
-                                            </span>
-                                            <div className="pt-7 px-4 pb-2 text-base">
-                                                <span>65 Kilometers</span>
+                                    <div className="relative">
+                                        <div
+                                            className="flex items-center justify-between border-2 rounded-md relative text-[#141414] cursor-pointer"
+                                            onClick={() =>
+                                                setShowLocationOptions(
+                                                    (prevState) => !prevState
+                                                )
+                                            }
+                                        >
+                                            <div className="flex-1">
+                                                <span className="inline-block absolute left-4 top-2 text-xs text-[rgba(20,20,20, .8)]">
+                                                    Radius
+                                                </span>
+                                                <div className="pt-7 px-4 pb-2 text-base">
+                                                    <span>
+                                                        {chosenLocation}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <MdArrowDropDown
+                                                    className="pr-4"
+                                                    color="#141414"
+                                                    size={50}
+                                                    cursor={"pointer"}
+                                                />
                                             </div>
                                         </div>
-                                        <MdArrowDropDown
-                                            className="pr-4"
-                                            color="#141414"
-                                            size={50}
-                                            cursor={"pointer"}
-                                        />
+                                        {showLocationOptions && (
+                                            <div className="absolute w-full top-full bottom-0 left-0 py-3 h-48 overflow-auto border rounded-md bg-white">
+                                                <ul className="text-sm text-[#141414]">
+                                                    <li
+                                                        className="p-2 border-b cursor-pointer hover:bg-gray-200 "
+                                                        onClick={
+                                                            handleSelection
+                                                        }
+                                                    >
+                                                        69 Kilometer
+                                                    </li>
+                                                    <li
+                                                        className="p-2 border-b cursor-pointer hover:bg-gray-200 "
+                                                        onClick={
+                                                            handleSelection
+                                                        }
+                                                    >
+                                                        34 Kilometer
+                                                    </li>
+                                                    <li
+                                                        className="p-2 border-b cursor-pointer hover:bg-gray-200 "
+                                                        onClick={
+                                                            handleSelection
+                                                        }
+                                                    >
+                                                        56 Kilometer
+                                                    </li>
+                                                    <li
+                                                        className="p-2 border-b cursor-pointer hover:bg-gray-200 "
+                                                        onClick={
+                                                            handleSelection
+                                                        }
+                                                    >
+                                                        64 Kilometer
+                                                    </li>
+                                                    <li
+                                                        className="p-2 border-b cursor-pointer hover:bg-gray-200 "
+                                                        onClick={
+                                                            handleSelection
+                                                        }
+                                                    >
+                                                        32 Kilometer
+                                                    </li>
+                                                    <li
+                                                        className="p-2 border-b cursor-pointer hover:bg-gray-200 "
+                                                        onClick={
+                                                            handleSelection
+                                                        }
+                                                    >
+                                                        10 Kilometer
+                                                    </li>
+                                                    <li
+                                                        className="p-2 border-b cursor-pointer hover:bg-gray-200 "
+                                                        onClick={
+                                                            handleSelection
+                                                        }
+                                                    >
+                                                        40 Kilometer
+                                                    </li>
+                                                    <li
+                                                        className="p-2 border-b cursor-pointer hover:bg-gray-200 "
+                                                        onClick={
+                                                            handleSelection
+                                                        }
+                                                    >
+                                                        50 Kilometer
+                                                    </li>
+                                                    <li
+                                                        className="p-2 border-b cursor-pointer hover:bg-gray-200 "
+                                                        onClick={
+                                                            handleSelection
+                                                        }
+                                                    >
+                                                        70 Kilometer
+                                                    </li>
+                                                    <li
+                                                        className="p-2 border-b cursor-pointer hover:bg-gray-200 "
+                                                        onClick={
+                                                            handleSelection
+                                                        }
+                                                    >
+                                                        32 Kilometer
+                                                    </li>
+                                                    <li
+                                                        className="p-2 border-b cursor-pointer hover:bg-gray-200 "
+                                                        onClick={
+                                                            handleSelection
+                                                        }
+                                                    >
+                                                        6 Kilometer
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="my-3">
                                     <img
                                         src={map}
                                         alt=""
+                                        
                                         className="h-full w-full"
                                     />
                                 </div>
@@ -166,7 +283,12 @@ function ChangeLocationModal({ onClose }) {
                         </div>
                     </div>
                     <div className="my-3">
-                        <img src={map} alt="" className="h-full w-full" />
+                        <img
+                            src={map}
+                            alt=""
+                            
+                            className="h-full w-full"
+                        />
                     </div>
                     <hr />
                     <div className="flex items-center justify-end gap-5 pt-3">
@@ -182,5 +304,9 @@ function ChangeLocationModal({ onClose }) {
         </div>
     );
 }
+
+ChangeLocationModal.propTypes = {
+    onClose: PropTypes.func,
+};
 
 export default ChangeLocationModal;

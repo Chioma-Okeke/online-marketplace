@@ -49,7 +49,7 @@ function MessageModal({ onClose }) {
                                     size={40}
                                     onClick={onClose}
                                     cursor={"pointer"}
-                                    className="bg-white rounded-full hover:scale-90 z-50"
+                                    className="bg-white rounded-full hover:scale-110 z-50"
                                 />
                             </div>
                             <hr />
@@ -58,6 +58,7 @@ function MessageModal({ onClose }) {
                                     <img
                                         src={image}
                                         alt=""
+                                         loading="lazy"
                                         className="mt-3 w-28 border-4 border-white rounded-3xl"
                                     />
                                     <div>
@@ -176,6 +177,7 @@ function MessageModal({ onClose }) {
                         <img
                             src={image}
                             alt=""
+                             loading="lazy"
                             className="mt-3 w-28 border-4 border-white rounded-3xl"
                         />
                         <div>
