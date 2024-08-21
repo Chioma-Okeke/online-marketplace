@@ -32,7 +32,7 @@ function ImageLoader({ src, alt, loading, width, height, className }) {
 }
 
 ImageLoader.propTypes = {
-    src: PropTypes.object,
+    src: PropTypes.string,
     alt: PropTypes.string,
     loading: PropTypes.string,
     width: PropTypes.string,

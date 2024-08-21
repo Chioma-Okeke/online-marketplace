@@ -51,7 +51,7 @@ function ListingGallery() {
                         alt=""
                         loading="lazy"
                         width="100%"
-                        height="700px"
+                        height={`${window.innerWidth > 1024 ? "700px" : "400px"}`}
                         className="rounded-3xl w-full max-h-[700px]"
                     />
                 </div>
