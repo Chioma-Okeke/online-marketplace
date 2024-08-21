@@ -22,7 +22,7 @@ function ListingsGrid() {
                 />
             ) : null}
             {!isLoading && (listings && listings.length !== 0 ? (
-                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 mt-6 gap-2 lg:gap-5 px-3 md:px-5 w-full">
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 mt-3 gap-2 lg:gap-5 px-3 md:px-5 w-full">
                     {listings.map((listing) => {
                         return (
                             <ListingSingle

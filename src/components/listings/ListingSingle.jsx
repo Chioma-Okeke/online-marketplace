@@ -36,7 +36,7 @@ function ListingSingle({ title, price, location, img, id }) {
                         loading="lazy"
                         className="w-full lg:rounded-md"
                     /> */}
-                    <ImageLoader src={img} loading="lazy" width="212px" height="187px"/>
+                    <ImageLoader src={img} loading="lazy" width="100%" height="187px"/>
                 </div>
                 <div className="flex justify-between">
                     <div className="text-sm lg:text-base pl-2">

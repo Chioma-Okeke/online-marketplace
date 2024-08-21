@@ -108,34 +108,34 @@ function NavContent() {
             </div>
             {/* {mobile screen} */}
             <div className="lg:hidden">
-                <div className="flex items-center justify-between text-sm sm:text-sm my-2">
+                <div className="flex items-center justify-between text-xs sm:text-sm my-2">
                     <div className="flex items-center gap-2 font-medium">
                         <Link to={"/selling"}>
                             <img
                                 src={profile}
                                 alt=""
-                                className="cursor-pointer w-10 sm:w-10"
+                                className="cursor-pointer w-8 sm:w-10"
                             />
                         </Link>
-                        <p className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
+                        <p className="p-1 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
                             Inbox
                         </p>
                         <Link
                             to={"/create"}
-                            className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
+                            className="p-1 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
                         >
                             Sell
                         </Link>
                         <p
                             onClick={handleCategories}
-                            className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
+                            className="p-1 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
                         >
                             Categories
                         </p>
                         {isAuthenticated && (
                             <p
                                 onClick={handleNotificationToggle}
-                                className="py-1 px-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
+                                className="p-1 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
                             >
                                 Notifications
                             </p>
@@ -158,10 +158,10 @@ function NavContent() {
                         </div>
                     )}
                     <div
-                        className="flex items-center gap-1 cursor-pointer float-right"
+                        className="flex items-center gap-1 cursor-pointer float-right text-xs sm:text-sm"
                         onClick={handleLocationToggle}
                     >
-                        <MdLocationPin size={20} />
+                        <MdLocationPin size={15} />
                         <span className="hover:underline text-[#720D96]">
                             Lagos, Nigeria
                         </span>
