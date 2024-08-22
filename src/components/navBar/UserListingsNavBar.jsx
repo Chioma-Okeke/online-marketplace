@@ -10,7 +10,7 @@ import profile from "../../assets/profile.svg";
 function UserListingsNavBar({ pageName }) {
     return (
         <div className="">
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
                 <header>
                     <div>
                         <Link
@@ -108,56 +108,6 @@ function UserListingsNavBar({ pageName }) {
                         <span id="userProfile w-5">User Profile</span>
                     </NavLink>
                 </div>
-                {/* <div className="pt-5">
-                    <div
-                        onClick={handleSelection}
-                        id="Browse All"
-                        className={`flex items-center gap-2 mb-2 p-1 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md ${
-                            currentCategory === "Browse All"
-                                ? "bg-[#e8d7ee] text-[#720d96]"
-                                : ""
-                        }`}
-                    >
-                        <div className="bg-[#e4e6eb] rounded-full p-2">
-                            <FaShop size={20} />
-                        </div>
-                        <span>Browse All</span>
-                    </div>
-                    {isAuthenticated && (
-                        <Link
-                            to={"/notifications"}
-                            className={`flex items-center gap-2 mb-2 p-1 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md`}
-                        >
-                            <div className="bg-[#e4e6eb] rounded-full p-2 w-fit">
-                                <IoNotifications size={20} />
-                            </div>
-                            <span>Notifications</span>
-                        </Link>
-                    )}
-                    <hr className="my-3" />
-                    <h1 className="font-semibold text-lg">Categories</h1>
-                    <div className="py-3">
-                        {listingCategories.map(({ id, Icon, category }) => {
-                            return (
-                                <div
-                                    key={id}
-                                    id={category}
-                                    onClick={handleSelection}
-                                    className={`flex items-center gap-2 mb-2 p-1 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md ${
-                                        currentCategory === category
-                                            ? "bg-[#e8d7ee] text-[#720d96]"
-                                            : ""
-                                    }`}
-                                >
-                                    <div className="bg-[#e4e6eb] rounded-full p-2">
-                                        <Icon size={20} id={category} />
-                                    </div>
-                                    <span id={category}>{category}</span>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div> */}
             </div>
         </div>
     );

@@ -224,7 +224,6 @@ function CreateListing() {
                             id="message"
                             cols={50}
                             rows={5}
-                            // onMouseLeave={setActiveInput("")}
                             onMouseEnter={(e) => highlightField(e)}
                             onChange={(e) => handleChange(e)}
                             className="border-2 border-[#ced0d4] shadow-sm w-full rounded-md resize-none p-2 focus:outline-[#720D96] hover:border-[#720D96] text-sm"

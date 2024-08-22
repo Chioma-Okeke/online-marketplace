@@ -126,7 +126,7 @@ function PostPreview({ images, formData, activeInput }) {
                             }`}
                         >
                             {message ? (
-                                <p>{message}</p>
+                                <p className="text-justify h-64 overflow-auto pr-2">{message}</p>
                             ) : (
                                 <p>Description will appear here</p>
                             )}

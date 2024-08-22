@@ -1,15 +1,13 @@
+import { useContext } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 
-import { ListingsProvider } from "../../../context/ListingsContext";
 import NavContainer from "../../navBar/NavContainer";
 import AppHeader from "../AppHeader";
+import { ListingsProvider } from "../../../context/ListingsContext";
 import ModalProvider, { ModalContext } from "../../../context/ModalContext";
 import ChangeLocationModal from "../../modals/ChangeLocationModal";
-import { useContext } from "react";
 import NotificationModal from "../../modals/NotificationModal";
-import SellerModal from "../../modals/SellerModal";
-import MessageModal from "../../modals/MessageModal";
 
 function PageLayout({ pageName, children }) {
     return (
@@ -22,13 +20,9 @@ function PageLayout({ pageName, children }) {
 function InnerPageLayout({ pageName, content }) {
     const {
         showLocationModal,
-        showSellerModal,
-        showMessageModal,
         showNotifications,
         handleLocationToggle,
         handleNotificationToggle,
-        handleMessageToggle,
-        handleSellerToggle,
     } = useContext(ModalContext);
 
     return (
@@ -67,5 +61,10 @@ PageLayout.propTypes = {
     pageName: PropTypes.string,
     children: PropTypes.node,
 };
+
+InnerPageLayout.propTypes = {
+    pageName: PropTypes.string,
+    content: PropTypes.node
+}
 
 export default PageLayout;

@@ -10,7 +10,7 @@ function SellingListings() {
 
     return (
         <section>
-            <div className="flex items-center p-3 gap-3 w-full md:hidden">
+            <div className="flex items-center p-3 gap-3 w-full lg:hidden">
                 <div className="w-[90%] mx-auto">
                     <Link to={"/create"}>
                         <Button className="p-4 rounded-md w-full bg-[#e8d7ee] text-[#720D96] font-semibold transition ease-in-out hover:text-white hover:bg-[#720D96]">
@@ -30,7 +30,7 @@ function SellingListings() {
                                 key={listing.id}
                                 id={listing.id}
                                 img={listing.image}
-                                isSeller
+                                isSellerListings={true}
                             />
                         );
                     })}

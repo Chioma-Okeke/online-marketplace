@@ -8,6 +8,7 @@ function ModalProvider({ children }) {
     const [showNotifications, setShowNotifications] = React.useState(false);
     const [showSellerModal, setShowSellerModal] = React.useState(false);
     const [showMessageModal, setShowMessageModal] = React.useState(false);
+    const [showDeleteListingsModal, setShowDeleteListingsModal] = React.useState(false);
 
     function handleLocationToggle() {
         if (!showLocationModal) {
@@ -22,6 +23,7 @@ function ModalProvider({ children }) {
             setShowLocationModal(false);
         }
     }
+
     function handleNotificationToggle() {
         if (!showNotifications) {
             document
@@ -35,6 +37,7 @@ function ModalProvider({ children }) {
             setShowNotifications(false);
         }
     }
+
     function handleSellerToggle() {
         if (!showSellerModal) {
             document
@@ -48,6 +51,7 @@ function ModalProvider({ children }) {
             setShowSellerModal(false);
         }
     }
+
     function handleMessageToggle() {
         if (!showMessageModal) {
             document
@@ -62,6 +66,20 @@ function ModalProvider({ children }) {
         }
     }
 
+    function handleDeleteListingsToggle() {
+        if (!showDeleteListingsModal) {
+            document
+                .getElementsByTagName("html")[0]
+                .classList.add("overflow-y-hidden");
+            setShowDeleteListingsModal(true);
+        } else {
+            document
+                .getElementsByTagName("html")[0]
+                .classList.remove("overflow-y-hidden");
+            setShowDeleteListingsModal(false);
+        }
+    }
+
     return (
         <ModalContext.Provider
             value={{
@@ -69,10 +87,12 @@ function ModalProvider({ children }) {
                 showNotifications,
                 showSellerModal,
                 showMessageModal,
+                showDeleteListingsModal,
                 handleLocationToggle,
                 handleMessageToggle,
                 handleNotificationToggle,
                 handleSellerToggle,
+                handleDeleteListingsToggle,
             }}
         >
             {children}

@@ -1,6 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types"
+
 import { IoMdArrowBack, IoMdCloseCircle, IoMdSearch } from "react-icons/io";
 import image from "../../assets/image1.png";
 
@@ -256,6 +257,10 @@ function SellerModal({ onClose }) {
             </div>
         </motion.div>
     );
+}
+
+SellerModal.propTypes = {
+    onClose: PropTypes.func.isRequired
 }
 
 export default SellerModal;

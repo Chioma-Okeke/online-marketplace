@@ -5,6 +5,7 @@ function ImageLoader({ src, alt, loading, width, height, className }) {
     const [isLoading, setIsLoading] = useState(true);
 
     const handleLoad = () => {
+        console.log("loaded")
         setIsLoading(false);
     };
 
@@ -13,7 +14,7 @@ function ImageLoader({ src, alt, loading, width, height, className }) {
             {isLoading && (
                 <div
                     className={`bg-gray-200 border shadow-sm`}
-                    style={{ minWidth: `${width}`, minHeight: `${height}` }}
+                    style={{ minWidth: width, minHeight: height }}
                 ></div>
             )}
 
@@ -25,7 +26,6 @@ function ImageLoader({ src, alt, loading, width, height, className }) {
                 height={height}
                 loading={loading}
                 onLoad={handleLoad}
-                style={{ display: isLoading ? "none" : "block" }} // Hide the main image until it's loaded
             />
         </div>
     );

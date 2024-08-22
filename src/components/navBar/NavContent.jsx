@@ -1,18 +1,17 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from "react";
-import Button from "../reusable/Button";
-import { listingCategories } from "../../data/listings";
-import profile from "../../assets/profile.svg";
-import { MdLocationPin } from "react-icons/md";
-import ChangeLocationModal from "../modals/ChangeLocationModal";
 import { Link } from "react-router-dom";
-import MobileCategories from "../modals/MobileCategories";
-import { ListingsContext } from "../../context/ListingsContext";
 import { FaShop } from "react-icons/fa6";
-import { IoNotifications } from "react-icons/io5";
-import { AuthContext } from "../../context/AuthContext";
+import { MdLocationPin } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
-import NotificationModal from "../modals/NotificationModal";
+import { IoNotifications } from "react-icons/io5";
+
+import Button from "../reusable/Button";
+import profile from "../../assets/profile.svg";
+import MobileCategories from "../modals/MobileCategories";
+import { listingCategories } from "../../data/listings";
+import { ListingsContext } from "../../context/ListingsContext";
+import { AuthContext } from "../../context/AuthContext";
 import { ModalContext } from "../../context/ModalContext";
 
 function NavContent() {
@@ -20,7 +19,7 @@ function NavContent() {
     const [currentCategory, setCurrentCategory] = React.useState("Browse All");
     const { showCategory } = React.useContext(ListingsContext);
     const { isAuthenticated } = React.useContext(AuthContext);
-    const {handleNotificationToggle, handleLocationToggle} = useContext(ModalContext)
+    const { handleNotificationToggle, handleLocationToggle } = useContext(ModalContext);
 
     function handleCategories() {
         if (!showCategories) {
@@ -108,7 +107,7 @@ function NavContent() {
             </div>
             {/* {mobile screen} */}
             <div className="lg:hidden">
-                <div className="flex items-center justify-between text-xs sm:text-sm my-2">
+                <div className="flex items-center justify-between text-[13px] sm:text-sm my-2">
                     <div className="flex items-center gap-2 font-medium">
                         <Link to={"/selling"}>
                             <img
@@ -117,25 +116,25 @@ function NavContent() {
                                 className="cursor-pointer w-8 sm:w-10"
                             />
                         </Link>
-                        <p className="p-1 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
+                        <p className="p-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]">
                             Inbox
                         </p>
                         <Link
                             to={"/create"}
-                            className="p-1 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
+                            className="p-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
                         >
                             Sell
                         </Link>
                         <p
                             onClick={handleCategories}
-                            className="p-1 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
+                            className="p-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
                         >
                             Categories
                         </p>
                         {isAuthenticated && (
                             <p
                                 onClick={handleNotificationToggle}
-                                className="p-1 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
+                                className="p-2 sm:py-2 sm:px-3 rounded-3xl bg-[#e4e6eb]"
                             >
                                 Notifications
                             </p>
@@ -143,9 +142,9 @@ function NavContent() {
                     </div>
                 </div>
                 <hr />
-                <div className="mt-2 flex items-center justify-between">
+                <div className="mt-2 flex items-center justify-between text-sm">
                     {currentCategory !== "Browse All" && (
-                        <div className="flex items-center gap-2 py-2 px-3 w-fit border border-[#720D96] rounded-2xl">
+                        <div className="flex items-center gap-2 py-1 px-3 w-fit border border-[#720D96] rounded-2xl">
                             <p>{currentCategory}</p>
                             <div
                                 onClick={() => {
@@ -153,12 +152,12 @@ function NavContent() {
                                     setCurrentCategory("Browse All");
                                 }}
                             >
-                                <IoMdClose size={20} />
+                                <IoMdClose size={15} />
                             </div>
                         </div>
                     )}
                     <div
-                        className="flex items-center gap-1 cursor-pointer float-right text-xs sm:text-sm"
+                        className="flex items-center gap-1 cursor-pointer float-right text-[13px] sm:text-sm"
                         onClick={handleLocationToggle}
                     >
                         <MdLocationPin size={15} />

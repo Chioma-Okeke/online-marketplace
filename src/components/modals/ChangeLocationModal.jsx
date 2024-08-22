@@ -25,7 +25,7 @@ function ChangeLocationModal({ onClose }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="hidden md:block fixed inset-0 z-50 transition-all duration-500"
+                className="hidden lg:block fixed inset-0 z-50 transition-all duration-500"
             >
                 {/* Modal Backdrop */}
                 <div
