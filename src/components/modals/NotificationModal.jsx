@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { IoMdArrowBack, IoMdCloseCircle, IoMdSearch } from "react-icons/io";
+import { IoMdArrowBack, IoMdCloseCircle, IoMdSearch, IoIosNotificationsOff } from "react-icons/io";
 import { motion } from "framer-motion";
 
 import noNotificationIllustration from "../../assets/nonotifications.png";
@@ -40,14 +40,7 @@ function NotificationModal({ onClose }) {
                             </div>
                             <hr />
                             <div className="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
-                                <ImageLoader
-                                    src={noNotificationIllustration}
-                                    className="w-20 mx-auto"
-                                    width="80px"
-                                    height="80px"
-                                    loading="lazy"
-                                    alt="No notification icon"
-                                />
+                                <IoIosNotificationsOff size={70} color="#111827" className="mx-auto"/>
                                 <p className="text-center p-3 text-xl font-medium text-gray-900 mt-2">
                                     You have no notifications.
                                 </p>
@@ -82,14 +75,7 @@ function NotificationModal({ onClose }) {
                 </div>
                 <hr />
                 <div className="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
-                    <ImageLoader
-                        src={noNotificationIllustration}
-                        className="w-20 mx-auto"
-                        width="80px"
-                        height="80px"
-                        loading="lazy"
-                        alt="No notification icon"
-                    />
+                    <IoIosNotificationsOff size={70} color="#111827" className="mx-auto"/>
                     <p className="text-center p-3 text-lg font-semibold text-gray-700">
                         You have no notifications.
                     </p>

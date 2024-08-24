@@ -43,7 +43,7 @@ function AppHeader() {
                     isSearchInProgress={isSearchInProgress}
                     setIsSearchInProgress={setIsSearchInProgress}
                 />
-                <div className="flex items-center gap-10">
+                <div className="hidden lg:flex items-center gap-10">
                     <div
                         className="hidden lg:flex items-center gap-1 cursor-pointer"
                         onClick={handleLocationToggle}
