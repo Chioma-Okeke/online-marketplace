@@ -3,13 +3,13 @@ import { ListingsContext } from "../../context/ListingsContext";
 import ListingSingle from "../listings/ListingSingle";
 
 function FavoriteListings() {
-    const { userFavoriteListings } = useContext(ListingsContext);
+    const { userFavoriteListings, listings } = useContext(ListingsContext);
 
     return (
         <section>
-            {userFavoriteListings.length > 0 ? (
-                <div className="grid grid-cols-2 mt-6 gap-2 px-3 w-full">
-                    {userFavoriteListings.map((listing) => {
+            {listings.length > 0 ? (
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 mt-6 gap-2 px-3 w-full">
+                    {listings.map((listing) => {
                         return (
                             <ListingSingle
                                 title={listing.title}

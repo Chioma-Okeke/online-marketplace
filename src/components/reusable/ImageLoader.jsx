@@ -13,8 +13,8 @@ function ImageLoader({ src, alt, loading, width, height, className }) {
         <div>
             {isLoading && (
                 <div
-                    className={`bg-gray-200 border shadow-sm`}
-                    style={{ minWidth: width, minHeight: height }}
+                    className={`bg-gray-100 border shadow-sm ${className}`}
+                    style={{ width: width, height: height }}
                 ></div>
             )}
 

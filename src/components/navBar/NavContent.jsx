@@ -64,8 +64,8 @@ function NavContent() {
                                 : ""
                         }`}
                     >
-                        <div className="bg-[#e4e6eb] rounded-full p-2">
-                            <FaShop size={20} />
+                        <div className="rounded-full p-2">
+                            <FaShop size={24} />
                         </div>
                         <span>Browse All</span>
                     </div>
@@ -74,8 +74,8 @@ function NavContent() {
                             onClick={handleNotificationToggle}
                             className={`flex items-center gap-2 mb-2 p-1 text-sm cursor-pointer transition ease-in-out hover:bg-[#e4e6eb] rounded-md`}
                         >
-                            <div className="bg-[#e4e6eb] rounded-full p-2 w-fit">
-                                <IoNotifications size={20} />
+                            <div className="rounded-full p-2 w-fit">
+                                <IoNotifications size={24} />
                             </div>
                             <span>Notifications</span>
                         </div>
@@ -95,8 +95,8 @@ function NavContent() {
                                             : ""
                                     }`}
                                 >
-                                    <div className="bg-[#e4e6eb] rounded-full p-2">
-                                        <Icon size={20} id={category} />
+                                    <div className="rounded-full p-2">
+                                        <Icon size={24} id={category} />
                                     </div>
                                     <span id={category}>{category}</span>
                                 </div>

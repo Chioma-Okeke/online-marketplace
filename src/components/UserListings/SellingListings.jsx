@@ -1,12 +1,34 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Button from "../reusable/Button";
 import { ListingsContext } from "../../context/ListingsContext";
 import ListingSingle from "../listings/ListingSingle";
+import { ModalContext } from "../../context/ModalContext";
+import DeleteListingsModal from "../modals/DeleteListingModal";
+import ListingService from "../../services/Listing";
 
 function SellingListings() {
-    const { listingsSoldByUser } = useContext(ListingsContext);
+    const { listingsSoldByUser, listings } = useContext(ListingsContext);
+    const [isDeleteInProgress, setIsDeleteInProgress] = useState(false);
+    const  [listingId, setListingId]  = useState("");
+    const { showDeleteListingsModal } = useContext(ModalContext);
+
+    async function deleteListing() {
+        try {
+            console.log(listingId)
+            setIsDeleteInProgress(true);
+            const response = await ListingService.deleteListing(listingId);
+            console.log(response);
+        } catch (err) {
+            console.error(err);
+            throw err;
+        } finally {
+            setIsDeleteInProgress(false);
+        }
+    }
+
+    console.log(typeof deleteListing, "in parent")
 
     return (
         <section>
@@ -19,9 +41,9 @@ function SellingListings() {
                     </Link>
                 </div>
             </div>
-            {listingsSoldByUser.length > 0 ? (
-                <div className="grid grid-cols-2 mt-6 gap-2 px-3 w-full">
-                    {listingsSoldByUser.map((listing) => {
+            {listings.length > 0 ? (
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 mt-6 gap-2 px-3 w-full">
+                    {listings.map((listing) => {
                         return (
                             <ListingSingle
                                 title={listing.title}
@@ -31,14 +53,22 @@ function SellingListings() {
                                 id={listing.id}
                                 img={listing.image}
                                 isSellerListings={true}
+                                setListingId={setListingId}
                             />
                         );
                     })}
                 </div>
             ) : (
                 <p className="text-center p-3 border-t-2 md:border-none text-sm md:text-xl font-semibold text-gray-400">
-                    Listings that you are selling on marketplace will appear here.
+                    Listings that you are selling on marketplace will appear
+                    here.
                 </p>
+            )}
+            {showDeleteListingsModal && (
+                <DeleteListingsModal
+                    isDeleteInProgress={isDeleteInProgress}
+                    deleteListing={deleteListing}
+                />
             )}
         </section>
     );

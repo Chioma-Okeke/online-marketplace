@@ -9,15 +9,27 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import ImageLoader from "../reusable/ImageLoader";
 import { ModalContext } from "../../context/ModalContext";
 
-function ListingSingle({ title, price, location, img, id, isSellerListings }) {
+function ListingSingle({ title, price, location, img, id, isSellerListings, setListingId }) {
     const [liked, setLiked] = React.useState(false);
-    const [likedPost, setLikedPosts] = React.useState([]);
+    const [likedPosts, setLikedPosts] = React.useState([]);
     const {handleDeleteListingsToggle} = React.useContext(ModalContext)
 
     function handleLike(e) {
         console.log(e.target.id, "event");
+        const listingId = e.target.id
         e.stopPropagation();
-        setLiked(!liked);
+        if (!likedPosts.includes(listingId)) {
+            setLikedPosts(prevState => {
+                return [...prevState, listingId]
+            })
+        } 
+        setLiked(true);
+        console.log(likedPosts, "liked posts")
+    }
+
+    function deleteListing () {
+        handleDeleteListingsToggle()
+        setListingId(id)
     }
 
     return (
@@ -44,7 +56,7 @@ function ListingSingle({ title, price, location, img, id, isSellerListings }) {
                 </div>
                 <div className="flex justify-between">
                     <div className="text-sm lg:text-base pl-2">
-                        <p className="font-semibold">{price}</p>
+                        <p className="font-medium text-lg">{price}</p>
                         <h1>{title}</h1>
                         <p>{location}</p>
                     </div>
@@ -66,7 +78,7 @@ function ListingSingle({ title, price, location, img, id, isSellerListings }) {
                     )}
                 </div>
             ) : (
-                <div className="absolute top-2 right-2" onClick={handleDeleteListingsToggle}>
+                <div className="absolute top-2 right-2" onClick={deleteListing}>
                     <RiDeleteBin6Line
                         color="red"
                         className="hover:scale-125 "

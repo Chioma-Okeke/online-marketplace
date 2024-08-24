@@ -38,9 +38,15 @@ function ChangeLocationModal({ onClose }) {
                     <div className="modal-wrapper flex items-center z-30 relative xl:w-[70%] justify-center">
                         <div className="max-w-md mx-5 w-[55%] xl:max-w-3xl lg:max-w-xl md:max-w-xl bg-white max-h-[93vh] shadow-lg rounded-lg relative">
                             <div className="flex items-center justify-between p-4 w-full ">
-                                <h1 className="font-semibold text-xl text-center flex-1">
-                                    Change Location
-                                </h1>
+                                <div>
+                                    <h1 className="font-semibold text-xl flex-1">
+                                        Change Location
+                                    </h1>
+                                    <p className="my-1 text-sm">
+                                        Search by town, city, neighborhood or
+                                        postal code
+                                    </p>
+                                </div>
                                 <IoMdCloseCircle
                                     size={40}
                                     onClick={onClose}
@@ -49,13 +55,9 @@ function ChangeLocationModal({ onClose }) {
                                 />
                             </div>
                             <hr />
-                            <div className="px-4 pb-3">
+                            <div className="px-4 pb-3 mt-2">
                                 <div className="text-xs text-[#65676B]">
-                                    <p className="my-2">
-                                        Search by town, city, neighborhood or
-                                        postal code
-                                    </p>
-                                    <div className="border-2 rounded-md mb-2">
+                                    <div className="border-2 rounded-md mb-4">
                                         <div className="flex items-center gap-2">
                                             <div className="pl-4">
                                                 <MdLocationPin size={20} />
@@ -64,10 +66,10 @@ function ChangeLocationModal({ onClose }) {
                                                 inputGroupClassNames="flex flex-col py-2 text-[#141414]"
                                                 inputLabel="Location"
                                                 labelFor="location"
-                                                labelClasses="mb-0 text-xs text-[rgba(20,20,20, .8)]"
+                                                labelClasses="mb-0 text-base text-[rgba(20,20,20, .8)]"
                                                 inputName="location"
                                                 inputId="location"
-                                                className="focus:outline-none text-base"
+                                                className="focus:outline-none text-[13px]"
                                                 placeholderText="Enter a town or city"
                                             />
                                         </div>
@@ -82,10 +84,10 @@ function ChangeLocationModal({ onClose }) {
                                             }
                                         >
                                             <div className="flex-1">
-                                                <span className="inline-block absolute left-4 top-2 text-xs text-[rgba(20,20,20, .8)]">
+                                                <span className="inline-block absolute text-base left-4 top-2 text-[rgba(20,20,20, .8)]">
                                                     Radius
                                                 </span>
-                                                <div className="pt-7 px-4 pb-2 text-base">
+                                                <div className="pt-7 px-4 pb-2 text-[13px]">
                                                     <span>
                                                         {chosenLocation}
                                                     </span>
@@ -200,12 +202,10 @@ function ChangeLocationModal({ onClose }) {
                                     <img
                                         src={map}
                                         alt=""
-                                        
-                                        className="h-full w-full"
+                                        className="w-[90%] mx-auto"
                                     />
                                 </div>
-                                <hr />
-                                <div className="flex items-center justify-end gap-5 pt-3">
+                                <div className="flex items-center justify-end gap-5">
                                     <Button
                                         onClick={onClose}
                                         className="border border-[#720D96] bg-white p-4 rounded-md font-medium transition ease-in-out hover:bg-[#720D96] hover:text-white duration-300"
@@ -283,12 +283,7 @@ function ChangeLocationModal({ onClose }) {
                         </div>
                     </div>
                     <div className="my-3">
-                        <img
-                            src={map}
-                            alt=""
-                            
-                            className="h-full w-full"
-                        />
+                        <img src={map} alt="" className="h-full w-full" />
                     </div>
                     <hr />
                     <div className="flex items-center justify-end gap-5 pt-3">
