@@ -8,6 +8,7 @@ import { MdArrowDropDown, MdLocationPin } from "react-icons/md";
 import FormInput from "../FormInput";
 import map from "../../assets/model-map.png";
 import { motion } from "framer-motion";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function ChangeLocationModal({ onClose }) {
     const [mouseEnter, setMouseEnter] = React.useState(false);
@@ -199,9 +200,9 @@ function ChangeLocationModal({ onClose }) {
                                     </div>
                                 </div>
                                 <div className="my-3">
-                                    <img
+                                    <LazyLoadImage
                                         src={map}
-                                        alt=""
+                                        alt="map"
                                         className="w-[90%] mx-auto"
                                     />
                                 </div>

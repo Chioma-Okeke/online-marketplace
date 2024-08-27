@@ -27,7 +27,7 @@ function ListingHeader() {
     }
 
     return (
-        <div className="sticky top-0 left-0 flex items-center justify-between p-3 border-b bg-white shadow-sm">
+        <div className="sticky top-0 left-0 flex items-center justify-between p-3 border-b bg-white shadow-sm z-30">
             <Link
                 to={`${backToPage}`}
                 className="flex items-center gap-2 cursor-pointer"

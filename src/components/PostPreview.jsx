@@ -89,7 +89,7 @@ function PostPreview({ images, formData, activeInput }) {
                         </div> */}
                     </div>
                 )}
-                <div className="w-[40%] p-5 text-sm">
+                <div className="w-[40%] p-5 text-sm overflow-auto">
                     <div className="mb-5">
                         <div
                             className={`text-2xl font-bold mb-2 ${
@@ -126,7 +126,7 @@ function PostPreview({ images, formData, activeInput }) {
                             }`}
                         >
                             {message ? (
-                                <p className="text-justify h-64 overflow-auto pr-2">{message}</p>
+                                <p className="text-justify pr-2">{message}</p>
                             ) : (
                                 <p>Description will appear here</p>
                             )}

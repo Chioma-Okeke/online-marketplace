@@ -4,6 +4,7 @@ import { IoClose, IoSearch } from "react-icons/io5";
 import PropTypes from "prop-types";
 
 import FormInput from "./FormInput";
+import Button from "./reusable/Button"
 import { ListingsContext } from "../context/ListingsContext";
 
 function SearchInput({ setIsSearchInProgress, isSearchInProgress }) {
@@ -12,10 +13,8 @@ function SearchInput({ setIsSearchInProgress, isSearchInProgress }) {
     const { searchListings, searchHistory, clearSearchHistory } =
         React.useContext(ListingsContext);
 
-    function handleSearch(e) {
-        const value = e.target.value;
-        setQuery(value);
-        searchListings(value);
+    function handleSearch() {
+        searchListings(query);
     }
 
     function handleFocus() {
@@ -32,6 +31,11 @@ function SearchInput({ setIsSearchInProgress, isSearchInProgress }) {
         setQuery(query);
         searchListings(query);
         setShowHistory(false);
+    }
+
+    function clearSearchInput() {
+        searchListings("");
+        setQuery("");
     }
 
     return (
@@ -53,7 +57,7 @@ function SearchInput({ setIsSearchInProgress, isSearchInProgress }) {
                             inputValue={query}
                             inputId="search"
                             ariaLabelName="search bar"
-                            onChange={handleSearch}
+                            onChange={(e) => setQuery(e.target.value)}
                             onFocus={handleFocus}
                             onBlur={handleBlur}
                             className="border-r border-white mb-0 bg-transparent border-0 focus:border-0 focus:outline-none w-full flex-1"
@@ -86,15 +90,22 @@ function SearchInput({ setIsSearchInProgress, isSearchInProgress }) {
                             inputValue={query}
                             inputId="search"
                             ariaLabelName="search bar"
-                            onChange={handleSearch}
+                            onChange={(e) => setQuery(e.target.value)}
                             onFocus={handleFocus}
                             onBlur={handleBlur}
                             className="border-r border-white mb-0 bg-transparent border-0 focus:border-0 focus:outline-none w-full flex-1"
                         />
-                        <div className="bg-[#e4e6eb] md:bg-[#720D96] p-2 rounded-full cursor-pointer">
+                        {query && <Button
+                            onClick={clearSearchInput}
+                            className="bg-gray-100 rounded-full cursor-pointer p-1 mr-3 hover:scale-105"
+                        >
+                            <IoClose/>
+                        </Button>}
+                        <div className="bg-[#e4e6eb] md:bg-[#720D96] hover:scale-105 p-2 rounded-full cursor-pointer">
                             <IoSearch
                                 size={20}
                                 color="white"
+                                onClick={handleSearch}
                                 className="hidden md:block"
                             />
                             <IoSearch
@@ -102,12 +113,14 @@ function SearchInput({ setIsSearchInProgress, isSearchInProgress }) {
                                     setIsSearchInProgress(true);
                                 }}
                                 size={20}
-                                className="md:hidden"
+                                className="md:hidden hover:scale-105"
                             />
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            <div></div>
 
             {showHistory && searchHistory.length > 0 && (
                 <div className="mt-2 absolute top-full left-0 w-full py-2 bg-white border rounded-md shadow z-10">

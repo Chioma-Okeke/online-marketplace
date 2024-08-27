@@ -103,7 +103,7 @@ function PersonalPageLayout({ pageName, children }) {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                         >
-                            {children}
+                              {children}
                         </motion.div>
                     </div>
                 </div>

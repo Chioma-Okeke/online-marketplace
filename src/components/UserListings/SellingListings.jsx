@@ -7,6 +7,7 @@ import ListingSingle from "../listings/ListingSingle";
 import { ModalContext } from "../../context/ModalContext";
 import DeleteListingsModal from "../modals/DeleteListingModal";
 import ListingService from "../../services/Listing";
+import FetchClient from "../../ServiceClients/FetchClient";
 
 function SellingListings() {
     const { listingsSoldByUser, listings } = useContext(ListingsContext);
@@ -15,10 +16,11 @@ function SellingListings() {
     const { showDeleteListingsModal } = useContext(ModalContext);
 
     async function deleteListing() {
+        const listingService = new ListingService(FetchClient)
         try {
             console.log(listingId)
             setIsDeleteInProgress(true);
-            const response = await ListingService.deleteListing(listingId);
+            const response = await listingService.deleteListing(listingId);
             console.log(response);
         } catch (err) {
             console.error(err);

@@ -1,4 +1,9 @@
 import listingImage from "../assets/image1.png"
+import listingImage1 from "../assets/image2.png"
+import listingImage2 from "../assets/image3.png"
+import listingImage3 from "../assets/image4.png"
+import listingImage4 from "../assets/image5.png"
+import listingImage5 from "../assets/image6.png"
 import { FaCarAlt } from "react-icons/fa";
 import { FaLandmark } from "react-icons/fa";
 import { GiLargeDress } from "react-icons/gi";
@@ -21,7 +26,7 @@ export const listings = [
         category: "Vehicles"
     },
     {
-        image: listingImage,
+        image: listingImage2,
         id: 2,
         title: "handbacg",
         price: "!00 dollars",
@@ -29,7 +34,7 @@ export const listings = [
         category: "vehicles"
     },
     {
-        image: listingImage,
+        image: listingImage3,
         id: 3,
         title: "handbacg",
         price: "!00 dollars",
@@ -37,7 +42,7 @@ export const listings = [
         category: "Clothing"
     },
     {
-        image: listingImage,
+        image: listingImage4,
         id: 4,
         title: "handbacg",
         price: "!00 dollars",
@@ -45,7 +50,7 @@ export const listings = [
         category: "musical Instruments"
     },
     {
-        image: listingImage,
+        image: listingImage5,
         id: 5,
         title: "handbacg",
         price: "!00 dollars",
